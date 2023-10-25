@@ -1,12 +1,43 @@
-\documentclass{article}
+\documentclass[onecolumn]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
 \usepackage{bm}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
-\setlength{\parindent}{10pt}
+\geometry{a4paper,scale=0.8}
+
+\makeatletter
+\renewcommand\@biblabel[1]{}
+\renewenvironment{thebibliography}[1]
+{\section*{\refname}%
+\@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+\list{\@biblabel{\@arabic\c@enumiv}}%
+{\settowidth\labelwidth{\@biblabel{#1}}%
+\leftmargin\labelwidth
+\advance\leftmargin\labelsep
+\advance\leftmargin by 2em%
+\itemindent -2em%
+\@openbib@code
+\usecounter{enumiv}
+\let\p@enumiv\@empty
+\renewcommand\theenumiv{\@arabic\c@enumiv}}%
+\sloppy
+\clubpenalty4000
+\@clubpenalty \clubpenalty
+\widowpenalty4000%
+\sfcode`\.\@m}
+{\def\@noitemerr
+{\@latex@warning{Empty `thebibliography' environment}}%
+\endlist}
+\makeatother
 
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
@@ -16,7 +47,7 @@
 
 \title{The Construction of Real Number System with Dedekind Cuts}
 \author{Jinxin Wang}
-\date{}
+\date{October 2023}
 
 \begin{document}
 
@@ -24,8 +55,8 @@
 
 \section{Abstract}
 
-We are going to construct the real number set $\mathbb{R}$ from the rational 
-number set $\mathbb{Q}$ using the Dedekind cuts.
+We are going to construct the real number field $\mathbb{R}$ from the rational 
+number field $\mathbb{Q}$ using the Dedekind cuts.
 
 \section{Ordered Set and Upper/Lower Bound}
 
@@ -58,7 +89,7 @@ $x + (-y) < 0$, then $x < y$. In this way, $\mathbb{Q}$ is an ordered set.
 With the definition of order and ordered set, we can define upper/lower bound, 
 as well as the least upper bound and the greatest lower bound.
 
-\begin{definition}[Upper/Lower Bound]
+\begin{definition}[Upper\&Lower Bound]
   Let S be an ordered set, and a set $E \subset S$. If there exists an 
   $\alpha \in S$ such that $x \leq \alpha$ for every $x \in E$, we say that $E$ 
   is bounded above, and call $\alpha$ an upper bound of E. If there exists a 
@@ -86,7 +117,7 @@ as well as the least upper bound and the greatest lower bound.
   then we say that $\beta$ is the greatest lower bound of E, or the infimum of E.
 \end{definition}
 
-\section{Number Field and Ordered Field}
+\section{Field and Ordered Field}
 
 We need to introduce the concept of a field, which is a kind of algebraic 
 structure. A field specifies the valid way to do the four basic arithmetic 
@@ -127,7 +158,7 @@ field. This complies with our common sense of $\mathbb{Q}$ and $\mathbb{R}$.
 For the purpose of this essay, we focus on fields whose elements are numbers, or
 number fields.
 
-It is obvious that $\mathbb{Q}$ is a field. (TODO: prove that $\mathbb{Q}$ is a field)
+It is clear that $\mathbb{Q}$ is a field. 
 
 Since a field is a set, it is natural to think about bringing the concept of 
 order to a field, which leads to the definition of an ordered field.
@@ -139,25 +170,6 @@ order to a field, which leads to the definition of an ordered field.
     \item If $x, y \in F$ and $x > 0$ and $y > 0$, then $xy > 0$.
   \end{itemize}
 \end{definition}
-
-\begin{proposition}
-  The following statements are true in every ordered field:
-  \begin{description}
-    \item{(1)} If $x > 0$, then $-x < 0$, and vice versa.
-    \item{(2)} If $x > 0$ and $y < z$, then $xy < xz$.
-    \item{(3)} If $x < 0$ and $y < z$, then $xy > xz$.
-    \item{(4)} If $x \neq 0$, then $x^2 > 0$. In particular, $1 > 0$.
-    \item{(5)} If $0 < x < y$, then $0 < \frac{1}{y} < \frac{1}{x}$.
-  \end{description}
-\end{proposition}
-\begin{proof}
-  \begin{description}
-    \item[(1)] If $x > 0$, then $-x + x > -x + 0$, $ 0 > -x$, $-x < 0$. 
-    If $-x < 0$, then $x + (-x) < x + 0$, $0 < x$, $x > 0$.
-    \item[(2)] Since $y < z$, then $-y + y < -y + z$, $0 < z - y$. Hence 
-    $x(z - y) > 0$, $xz - xy > 0$, $xz - xy + xy > 0 + xy$，$xz > xy$.
-  \end{description}  
-\end{proof}
 
 \section{Archimedean Property}
 We can discuss the Archimedean property on some number groups with an order and 
@@ -193,9 +205,7 @@ It is stated as follows:
   \]
 \end{proof}
 
-\section{Real Number Set Defined with Dedekind Cuts}
-
-\subsection{Specify the Members of the Real Number Set}
+\section{Define the Real Number Set with Dedekind Cuts}
 
 \begin{definition}
   A Dedekind cut on $\mathbb{Q}$ is any set $\alpha \subset \mathbb{Q}$ with the
@@ -237,7 +247,7 @@ It is stated as follows:
 We define every member of the real number set $\mathbb{R}$ is a Dedekind cut on 
 $\mathbb{Q}$.
 
-\subsection{Specify the Order in the Real Number Set}
+\section{The Order in the Real Number Set}
 
 \begin{definition}
   $\forall \alpha, \beta \in \mathbb{R}$, $\alpha < \beta$ is true if and only 
@@ -268,7 +278,7 @@ We need to prove that the above definition is a valid order in a set.
 
 Now $\mathbb{R}$ is an ordered set.
 
-\subsection{Prove the Real Number Set Has the Least-Upper-Bound Property}
+\subsection{Least-Upper-Bound Property in the Real Number Set}
 
 We claim that the real numbet set $\mathbb{R}$ defined as above has the 
 least-upper-bound property.
@@ -306,7 +316,7 @@ least-upper-bound property.
   Overall, it is proved that $\gamma = \sup A$.
 \end{proof}
 
-\subsection{Define the Addition Operation on the Real Number Set}
+\section{The Addition Operation in the Real Number Set}
 
 For any $\alpha \in \mathbb{R}$ and $\beta \in \mathbb{R}$, we define 
 $\alpha + \beta$ as the set of all sums $r + s$, where $r \in \alpha$ and 
@@ -413,7 +423,9 @@ properties required for the addition operation of a field.
   operation relies on the archimedean property of $\mathbb{Q}$.
 \end{remark}
 
-\subsection{Define the Multiplication Operation on the Positive Real Number Set}
+\section{The Multiplication Operation in the Real \\ Number Set}
+
+\subsection{Definition in the Positive Real Number Set}
 
 We first define the multiplication operation in $\mathbb{R^+}$, the set of all 
 $\alpha \in \mathbb{R}$ such that $\alpha > 0^*$.
@@ -573,7 +585,7 @@ $\alpha (\beta + \gamma) = \alpha \beta + \alpha \gamma$.
   $\alpha \beta + \alpha \gamma \subset \alpha (\beta + \gamma)$.
 \end{proof}
 
-\subsection{Expand the Multiplication Operation to the Real \\ Number Set}
+\subsection{Expand the Definition to the Complete Set}
 
 We expand the multiplication operation in $\mathbb{R^+}$ defined above to 
 $\mathbb{R}$ by adding the following definition:
@@ -613,9 +625,105 @@ example.
   the commutative property.
 \end{proof}
 
-Now we have proved that $\mathbb{R}$ is an ordered field with the 
-least-upper-bound property.
+Now we conclude that $\mathbb{R}$ is a field.
 
-\section{Properties of the Defined Real Number Set}
+\section{Other Properties of the Real Number Field}
 
+\subsection{Map Rational Numbers to Rational Cuts}
+
+We map each rational number $r \in \mathbb{Q}$ to the set $r^*$ which consists 
+of all rational numbers $p$ such that $p < r$. It is clear that every $r^*$ is a 
+Dedekind cut. These cuts mapped to rational numbers satisfy the following 
+relations:
+\begin{enumerate}
+  \item $r^* + s^* = (r + s)^*$
+  \item $r^*s^* = (rs)^*$
+  \item $r^* < s^*$ if and only if $r < s$
+\end{enumerate}
+\begin{proof}
+  \begin{enumerate}
+    \item $\forall p \in r^* + s^*$, $p = u + v$ where $u < r$ and $v < s$. 
+    Hence $p < r + s$, which follows that $p \in (r + s)^*$. Therefore, 
+    $r^* + s^* \subset (r+s)^*$. Conversely, $\forall p < r + s$, 
+    $p = \frac{p + r - s}{2} + \frac{p + s - r}{2}$, where 
+    $\frac{p + r - s}{2} < r$ and $\frac{p + s - r}{2} < s$. Hence 
+    $p \in r^* + s^*$. Therefore, $(r + s)^* \subset r^* + s^*$. Then we can 
+    conclude that $r^* + s^* = (r + s)^*$.
+    \item Suppose $r > 0$ and $s > 0$, $\forall p \in r^*s^*$, $p < uv$ where 
+    $0 < u < r$ and $0 < v < s$. Hence $p < rs$, which follows that 
+    $p \in (rs)^*$. Therefore $r^*s^* \subset (rs)^*$. Conversely, 
+    $\forall p < rs$, $p = \sqrt{\frac{pr}{s}}\sqrt{\frac{ps}{r}}$ where 
+    $\sqrt{\frac{pr}{s}} < r$ and $\sqrt{\frac{ps}{r}} < s$. Hence 
+    $p \in r^*s^*$. Therefore $(rs)^* \subset r^*s^*$. Thus, $r^*s^* = (rs)^*$ 
+    for all choice of $r > 0$ and $s > 0$. For multiplication operations 
+    involving $0^*$, based on the definition of the multiplication operation, 
+    $r^*0^* = 0^*r^* = 0^* = (r0)^* = (0r)^*$. As for the cases involving the 
+    cuts of negative rational numbers, we can apply the identity equation 
+    $r^* = -(-r)^*$ with $r < 0$. If $r < 0$ and $s < 0$, then 
+    $r^*s^* = (-r)^*(-s)^* = ((-r)(-s))^* = (rs)^*$. If $r < 0$ and $s > 0$, 
+    then $r^*s^* = -((-r)^*s^*) = -((-r)s)^* = (rs)^*$. If $r > 0$ and $s < 0$, 
+    then $r^*s^* = -(r^*(-s)^*) = -(r(-s))^* = (rs)^*$. Now we can conclude that 
+    $r^*s^* = (rs)^*$.
+    \item If $r < s$, then $\forall p < r$, it also satisfies $p < s$, whereas 
+    $r < \frac{r + s}{2} < s$. Hence $r^* \subsetneq s^*$, which means that 
+    $r^* < s^*$. If $r^* < s^*$, then $\exists p \in s^*$ such that 
+    $\forall q \in r^*$, $p > q$. Hence $p \geq r$ and $p < s$, which follows 
+    that $r < s$. Therefore, $r^* < s^*$ if and only if $r < s$.
+  \end{enumerate}
+\end{proof}
+
+The above relations mean that the mapping between rational numbers and rational 
+cuts doesn't change the algebraic relations involving addition, multiplication 
+and comparison. This fact can also be expressed as the ordered field $\mathbb{Q}$ 
+is isomorphic to the ordered field $\mathbb{Q^*}$ whose elements are rational 
+cuts. The isomorphic relation allows us to regard $\mathbb{Q}$ as a subfield of 
+$\mathbb{R}$.
+
+\subsection{An Ordered Field}
+
+We claim that $\mathbb{R}$ is an ordered field with the order we defined above.
+\begin{proof}
+If $\alpha, \beta, \gamma \in \mathbb{R}$ and $\beta < \gamma$, then 
+$\beta \subsetneq \gamma$. $\forall p \in \alpha + \beta$, $p = q + r$ for some 
+choice of $q \in \alpha$ and $r \in \beta$. Then $r \in \gamma$. Hence 
+$p \in \alpha + \gamma$. Therefore, $\alpha + \beta \subset \alpha + \gamma$. On 
+the other hand, $\beta \subsetneq \gamma$ implies that $\exists p \in \gamma$ 
+such that $\forall q \in \beta$, $p > q$. Based on the definition of a cut, 
+there exists $r > 0$ such that $p + r \in \gamma$. Since the distance between a 
+member and a non-member of a cut can be any closer, we can find $s \in \alpha$ 
+such that $s + r \notin \alpha$. Since $p > q$ for any $q \in \beta$ and 
+$s + r > t$ for any $t \in \alpha$, $p + s + r \notin \alpha + \beta$. As 
+$s \in \alpha$ and $p + r \in \gamma$, $p + s + r \in \alpha + \gamma$. Hence 
+$\alpha + \beta \subsetneq \alpha + \gamma$. Therefore, 
+$\alpha + \beta < \alpha + \gamma$.
+
+If $\alpha, \beta \in \mathbb{R}$ and $\alpha > 0^*$, $\beta > 0^*$, then there 
+exist $p \in \alpha p > 0$ and $q \in \beta \wedge q > 0$. Hence $pq > 0$ and 
+$pq \in \alpha \beta$. Therefore $\alpha \beta > 0^*$. 
+\end{proof}
+
+\subsection{The Archimedean Property}
+
+We claim that $\mathbb{R}$ has the archimedean property.
+\begin{proof}
+  Suppose $\alpha, \beta \in \mathbb{R}$ and $\alpha > 0^*$. Pick 
+  $p \in \alpha \wedge p > 0$ and $q \notin \beta$. Since $p, q \in \mathbb{Q}$ 
+  and $p > 0$, based on the archimedean property of $\mathbb{Q}$, there exists 
+  an integer $n$ such that $np > q$, which follows that $\forall r \in \beta$, 
+  $np > r$. Since $np \in (n+1)^* \alpha$, $(n+1)\alpha = (n+1)^*\alpha > \beta$.
+\end{proof}
+
+\section{Conclusion}
+
+We can conclude that the Real Number system defined with the Dedekind cuts is an 
+ordered field with the least-upper-bound property, the archimedean property, and 
+$\mathbb{Q}$ as its subfield.
+
+\begin{thebibliography}{}
+\bibliographystyle{ieee}
+  
+\bibitem{Ref1}[1]
+Rudin, Walter. "Principles of Mathematical Analysis, International Series in 
+Pure and Applied Mathematics, McGraw-Hil." (1976).
+\end{thebibliography}
 \end{document}
