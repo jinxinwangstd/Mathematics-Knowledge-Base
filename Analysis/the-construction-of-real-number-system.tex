@@ -39,14 +39,14 @@
 \endlist}
 \makeatother
 
-\newtheorem{definition}{Definition}[section]
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}{Proposition}[section]
-\newtheorem{corollary}{Corollary}[section]
-\newtheorem{remark}{Remark}[section]
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
 
-\title{The Construction of Real Number System with Dedekind Cuts}
-\author{Jinxin Wang}
+\title{The Construction of the Real Number System with Dedekind Cuts}
+\author{Jinxin Wang (1230509005)}
 \date{October 2023}
 
 \begin{document}
@@ -60,11 +60,15 @@ number field $\mathbb{Q}$ using the Dedekind cuts.
 
 \section{Ordered Set and Upper/Lower Bound}
 
-Next we need to define the order of elements in a set in a general way. For the
-number sets that we are already familiar with, such as $\mathbb{N}$ or 
-$\mathbb{Q}$, the order of their elements seems natural. However, as we shall 
-see, the concept of order is abstract in nature. Depending on the operation an 
-order relies, we can define different orders on the same set.
+It is one of the most common thing to compare two elements in a set, which 
+relies on an order between each pair of elements. Order is important. From one 
+perspective, it connects comparable elements with each other. Hence we want to 
+generalize the concept of an order of elements in a set, to bring orders to more 
+sets in a valid way. For the number sets that we are already familiar with, such 
+as $\mathbb{N}$ or $\mathbb{Q}$, the order of their elements seems natural. 
+However, as we shall see, the concept of order is abstract in nature. Depending 
+on the operation an order relies, we can define different orders on the same 
+set.
 
 \begin{definition}[Order]
   Let S be a set. An order on S is a relation, denoted by <, with the following 
@@ -122,7 +126,8 @@ as well as the least upper bound and the greatest lower bound.
 We need to introduce the concept of a field, which is a kind of algebraic 
 structure. A field specifies the valid way to do the four basic arithmetic 
 operation with its elements, and get the result which still belongs to the 
-field. This complies with our common sense of $\mathbb{Q}$ and $\mathbb{R}$.
+field. This complies with our common sense of number systems such as 
+$\mathbb{Q}$.
 
 \begin{definition}[Field]
   A field F is a set with two binary operations defined on it, namely addition and
@@ -142,9 +147,9 @@ field. This complies with our common sense of $\mathbb{Q}$ and $\mathbb{R}$.
       \item Closed: $\forall x, y \in F$, $xy \in F$.
       \item Associative: $\forall x, y, z \in F$, $(xy)z = x(yz)$.
       \item Identity element: $\exists 1 \in F$, $\forall x \in F$, $1x = x1 = x$.
-      \item Inverse element: $\forall x \in F \setminus \{0\}$, $\exists \frac{1}{x} \in F$ such that
+      \item Inverse element: $\forall x \in F \setminus \{0\}$, $\exists x^{-1} \in F$ such that
       \[
-        x \cdot \frac{1}{x} = \frac{1}{x} \cdot x = 1
+        x \cdot x^{-1} = x^{-1} \cdot x = 1
       \]
       \item Commutative: $\forall x, y \in F$, $x \cdot y = y \cdot x$
     \end{itemize}
@@ -415,7 +420,6 @@ properties required for the addition operation of a field.
     $p \in (-\alpha)$. Besides, $ns' + p = -2s' = s$. Therefore, 
     $0^* \subset (\alpha + (-\alpha))$.
   \end{itemize}
-  We conclude that $\alpha + (-\alpha) = 0^*$.
 \end{proof}
 
 \begin{remark}
@@ -583,6 +587,8 @@ $\alpha (\beta + \gamma) = \alpha \beta + \alpha \gamma$.
   $p < q_1 s + q_2 t < q_2 (s + t)$ where $s + t \in \beta + \gamma$. Thus 
   $p \in \alpha (\beta + \gamma)$. Therefore, 
   $\alpha \beta + \alpha \gamma \subset \alpha (\beta + \gamma)$.
+
+  As a result, $\alpha \beta + \alpha \gamma = \alpha (\beta + \gamma)$.
 \end{proof}
 
 \subsection{Expand the Definition to the Complete Set}
@@ -621,8 +627,8 @@ example.
   If $\alpha > 0^*$ and $\beta < 0^*$, then $-\beta > 0^*$. Hence 
   $\alpha \beta = -(\alpha(-\beta)) = -((-\beta)\alpha) = \beta \alpha$.
 
-  We can conclude that the multiplication operation in $\mathbb{R}$ satisfies 
-  the commutative property.
+  Therefore, $\forall \alpha, \beta \in \mathbb{R}$, it holds that 
+  $\alpha\beta = \beta\alpha$.
 \end{proof}
 
 Now we conclude that $\mathbb{R}$ is a field.
