@@ -1,0 +1,238 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\title{空间解析几何笔记}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{图形与方程}
+
+\section{平面方程}
+
+\section{直线方程}
+
+\subsection{直线的两类方程}
+
+\subsubsection{点向式方程}
+
+\subsubsection{一般方程}
+
+\subsubsection{两类方程的相互转化}
+
+\subsection{直线与平面的位置关系}
+位置关系：
+\begin{itemize}
+  \item 平行不重合
+  \item 重合
+  \item 相交
+\end{itemize}
+
+\subsubsection{平行和重合}
+
+\subsubsection{相交}
+
+当直线与平面相交时，求交点：
+
+\subsection{共轴平面系}
+
+\subsection{直线与直线的位置关系}
+两直线间的位置关系总览，同时也是一种判断两条直线的位置关系的流程：
+\begin{itemize}
+  \item 方向向量共线
+  \begin{itemize}
+    \item 平行
+    \item 重合
+  \end{itemize}
+  \item 方向向量不共线
+  \begin{itemize}
+    \item 相交
+    \item 异面
+  \end{itemize}
+\end{itemize}
+
+\section{有关平面和直线的度量关系}
+
+\subsection{度量的基础}
+\begin{itemize}
+  \item 向量的内积运算给出空间中两点之间距离的度量。
+  \item 向量的内积和外积运算给出空间中直线之间的角度的度量。
+\end{itemize}
+
+\subsection{直角坐标系中图形方程的几何意义}
+
+\subsubsection{平面的一般方程}
+
+\subsubsection{直线的一般方程}
+
+\subsubsection{共轴平面系}
+
+\subsection{距离的度量}
+点到直线的距离和点到平面的距离是基础，其它距离都可转化为这两种距离之一。
+
+\subsubsection{点到直线的距离}
+
+\subsubsection{点到平面的距离}
+
+\subsubsection{平行直线之间的距离}
+
+\subsubsection{直线到平行平面的距离}
+
+\subsubsection{平行平面之间的距离}
+
+\subsubsection{异面直线的距离与公垂线的方程}
+
+\begin{definition}
+  两异面直线的公垂线定义为与这两条直线都相交且垂直的直线。
+
+  两异面直线之间的距离定义为它们的公垂线与这两条直线的交点的距离。
+\end{definition}
+
+求两异面直线之间的距离的方法：
+\begin{itemize}
+  \item 转化为两点之间的距离：利用参数设出公垂线与两直线的交点，利用公垂线的几何特性（垂直）求出交点坐标，则异面直线的距离等于两交点的距离。
+  \item 转化为直线到平行平面的距离：求出过其中一条直线与另一条直线平行的平面，则异面直线距离等于直线到所求平行平面的距离。
+\end{itemize}
+
+求两异面直线的公垂线方程的方法：
+\begin{itemize}
+  \item 利用公垂线与异面直线的交点：同上面利用两点之间的距离求异面直线的距离的方法。
+  \item 利用公垂线与异面直线决定的平面：公垂线的方向向量易求，则可求出公垂线与两异面直线各自决定的平面，则这两个平面的交线即为公垂线。
+\end{itemize}
+
+\begin{remark}
+  \begin{enumerate}
+    \item 利用参数设公垂线与异面直线的交点需要直线的点向式方程。一般情况下计算量较小，优先使用。
+    \item 利用共轴平面系求各种平面的方法虽然不需要将直线的一般方法转化为点向式方程，但一般情况下计算量仍比利用公垂线交点的方法要大，因此一般不优先使
+    用。但其中体现的几何特征还是值得掌握。
+  \end{enumerate}
+\end{remark}
+
+\subsection{夹角的度量}
+
+\subsubsection{平面与平面之间的夹角}
+
+\subsubsection{直线与直线之间的夹角}
+
+\subsubsection{直线与平面之间的夹角}
+
+\section{旋转面、柱面和锥面}
+
+\subsection{Surface of Revolution旋转面}
+
+\subsection{Cylindrical Surface柱面}
+
+\subsection{Conical Surface锥面}
+
+\begin{definition}[Geometric Definition of Conical Surfaces]
+  A conical surface consists of a series of lines passing through a same point. 
+  Each line is called a generatrix. The point is called the apex of the conical 
+  surface. A line intersecting with all generatrix is called a directrix of the 
+  conical surface.
+\end{definition}
+
+The elements to determine a conical surface: the apex and the directrix.
+
+The process of deriving the equation of a conical surface given the apex and the 
+directrix:
+
+\begin{remark}
+  The equation derived by the above process doesn't include the apex in its zero 
+  set.
+\end{remark}
+\begin{remark}
+  The equation derived by the above process usually has some fractions (分式) with 
+  variables in their denominators, e.g. $\frac{4x^2}{z^2} - \frac{y^2}{z^2} = 1$, 
+  due to the elimination of parameters. It is tempting to transform it into an 
+  equation without fractions, with the benefit of including the apex in its zero 
+  set. However, the transformation also has possible risk of including more 
+  points not belonging to the conical surface in the zero set.
+
+  Ex1: The equation of a conical surface $\frac{4x^2}{z^2} - \frac{y^2}{z^2} = 1$ 
+  with the origin as its apex, can be transformed to $4x^2 - y^2 - z^2 = 0$. 
+  Compared with the previous equation, the transformation adds $(0, 0, 0)$ (the 
+  apex), and the points in the lines
+  $\begin{cases}
+    2x - y = 0 \\
+    z = 0
+  \end{cases}$, and
+  $\begin{cases}
+    2x + y = 0 \\
+    z = 0
+  \end{cases}$ to the point set of the conical surface, which is wrong.
+
+  Ex2: The equation of a conical surface $\frac{x^2}{z^2} + \frac{y^2}{z^2} = 3$ 
+  with the origin as its apex, can be transformed to $x^2 + y^2 - 3z^2 = 0$. 
+  Compared with the previous equation, the transformation adds $(0, 0, 0)$ (the 
+  apex) to the point set of the conical surface, which is fine.
+
+  To determine whether such transformation is valid, wen need to work out the 
+  points added to the zero set by the elimination of denominators by solving the 
+  transformed equation with the denominators set to 0.
+\end{remark}
+
+\begin{proposition}
+  The graph of a homogeneous equation of degree $n$ is a conical surface with 
+  the origin as its apex.
+\end{proposition}
+\begin{proof}
+  Hint:
+  \begin{itemize}
+    \item Since the equation is a homogeneous equation of degree $n$ (it is 
+    clear that $n \geq 1$ otherwise we will have a trivial equation of $0 = 0$), 
+    the origin is in its point set.
+    \item For any point $M(x, y, z) \in S$, it is true that $M'(\lambda x, 
+    \lambda y, \lambda z) \in S, \lambda \in \mathbb{R}$. All these points form 
+    a line through the origin.
+  \end{itemize}
+\end{proof}
+
+\section{Quadric Surface}
+
+\section{Ruled Quadric Surface}
+
+Geometric interpretation of ruled surface: 由一簇直线构成的曲面叫做直纹面。
+
+\subsection{Quadric Cylindrical Surface二次柱面}
+
+Based on the geometric interpretation of cylindrical surfaces, they are a kind of ruled surface.
+
+\subsection{Quadric Conical Surface二次锥面}
+
+Based on the geometric interpretation of conical surfaces, they are a kind of ruled surface.
+
+\subsection{Hypobolic Paraboloid双曲抛物面}
+
+\subsection{Hyperboloid of One Sheet单叶双曲面}
+
+\section{方法与技巧}
+
+\subsection{求平面方程}
+\begin{itemize}
+  \item 直线的一般方程+直线外一点坐标：共轴平面系
+  \item 直线的点向式方程+直线外一点坐标：行列式
+\end{itemize}
+
+\end{document}
