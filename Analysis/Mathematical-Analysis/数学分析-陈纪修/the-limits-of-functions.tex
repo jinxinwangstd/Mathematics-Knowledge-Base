@@ -1,0 +1,111 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\title{Notes of "The Limit of A Function"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Definition of the Limit of a Function}
+
+\begin{definition}[The Limit of a Function (Basic Type)]
+  ($\epsilon$-$\delta$)
+\end{definition}
+
+\begin{remark}
+  Based on the definition, we can see that limits are a kind of local 
+  characteristic of a function. With that, when using the definition to prove 
+  the limit of a function at $x = x_0$, we can discuss it within a certain 
+  neighborhood $O(x_0, \delta_0)$.
+\end{remark}
+
+\section{Properties of the Limit of a Function}
+
+\section{方法与技巧}
+
+\subsection{证明与研究函数极限}
+
+\begin{itemize}
+  \item 定义法
+  \item 变量代换
+\end{itemize}
+
+\begin{remark}
+  在研究函数极限时使用变量代换是否总是成立？这个问题使用数学语言来描述如下：\\
+  Suppose that $\lim_{x \to a} g(x) = A$, $\lim_{x \to A} f(x) = B$, is it true that 
+  \[
+    \lim_{x \to a} f(g(x)) = \lim_{y \to A} f(y)
+  \]
+  In fact it is not always true. Here is a counterexample: Let $g(x) \equiv 0$, 
+  and thus $\lim_{x \to 0} g(x) = 0$. Let $f(x) = 
+  \begin{cases}
+    1, x = 0 \\
+    0, x \neq 0
+  \end{cases}$. Then we have $\lim_{x \to 0} f(x) = 0$, $\lim_{x \to 0} f(g(x)) 
+  = 1$. 这里的数学直观是$\lim_{x \to a} g(x) = A$决定了$y = g(x) \to A$的方式。它与
+  $\lim_{x \to A} f(x) = B$中$x \to A$的不同可能导致结果的不同。
+
+  Here are two propositions related to this problem:
+  \begin{proposition}
+    Suppose that $\lim_{x \to a} g(x) = A$, $\lim_{x \to A} f(x) = B$. If any of 
+    the following conditions is true:
+    \begin{itemize}
+      \item $\exists \delta_0 > 0$ such that $\forall x \in O(a, \delta_0) 
+      \setminus \{a\}$: $g(x) \neq A$.
+      \item $\lim_{x \to A} f(x) = f(A)$.
+      \item $A = \infty$, and $\lim_{x \to \infty} f(x)$ is defined.
+    \end{itemize}
+    then the following is true:
+    \[
+      \lim_{x \to a} f(g(x)) = \lim_{y \to A} f(y)
+    \]
+  \end{proposition}
+  \begin{proof}
+    Hint:
+    \begin{itemize}
+      \item Notice the difference between the conclusion of the definition of 
+      $\lim_{x \to a} g(x) = A$, and the condition of the definition of 
+      $\lim_{x \to A} f(x) = B$.
+      \item Notice what change the fact of continuity brings to the definition 
+      of $\lim_{x \to A} f(x) = B$.
+    \end{itemize}
+  \end{proof}
+
+  \begin{proposition}
+    If $\lim_{x \to a} g(x) = A$, $\lim_{x \to A} f(x) = B$, then exact one of 
+    the following situation is true:
+    \begin{itemize}
+      \item $\lim_{x \to a} f(g(x)) = B$
+      \item $\lim_{x \to a} f(g(x)) = g(A)$
+      \item $\lim_{x \to a} f(g(x))$ is not defined
+    \end{itemize}
+  \end{proposition}
+  \begin{proof}
+    Hint: Using the first condition of the previous proposition to discuss 
+    different kinds of $g(x)$.
+  \end{proof}
+\end{remark}
+
+\end{document}
