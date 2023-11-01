@@ -1,0 +1,120 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\title{Notes of "Vector Space of Rows and Columns"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Basic Definitions}
+
+\begin{definition}[Row (Vector) Space and Row Vectors]
+  Given $n \in \mathbb{N}$, 
+\end{definition}
+
+Properties of Vector Space
+\begin{enumerate}
+  \item Associative property of addition
+  \item Commutative property of addition
+  \item Zero element
+  \item Inverse element of addition
+  \item Unit element in scalars
+  \item $\alpha(\beta X) = (\alpha \beta)X$
+  \item $(\alpha + \beta)X = \alpha X + \beta X$
+  \item $\alpha (X + Y) = \alpha X + \alpha Y$
+\end{enumerate}
+
+There are also column vector space and column vectors.
+
+\section{Linear Combination and Linear Span}
+
+\begin{definition}[Linear Combinations of Vectors]
+  
+\end{definition}
+
+Linear combinations have an interesting property:
+\begin{proposition}
+  A linear combination of linear combinations of vectors $X_1, X_2, \ldots, X_k 
+  \in \mathbb{R}^n$ is also a linear combination of vectors $X_1, X_2, \ldots, 
+  X_k \in \mathbb{R}^n$.
+\end{proposition}
+\begin{proof}
+  Hint: Express the linear combination by vectors $X_1, X_2, \ldots, X_k \in 
+  \mathbb{R}^n$
+\end{proof}
+
+Therefore, if we consider the set $V$ consisting of all linear combinations of 
+vectors $X_1, X_2, \ldots, X_k \in \mathbb{R}^n$, it has the following property:
+\[
+  X, Y \in V \Rightarrow \alpha X + \beta Y \in V, \forall \alpha \beta \in \mathbb{R}
+\]
+
+\begin{definition}[Linear Span (Or Linear Hull)]
+  
+\end{definition}
+
+\begin{definition}[Linear Span of a Subset in $\mathbb{R}^n$]
+  Given a subset $S \subset \mathbb{R}^n$, the linear span of $S$, denoted by 
+  $\langle S \rangle$, is the set of all linear combinations of any finite numbers of vectors 
+  in $S$.
+\end{definition}
+Some interesting properties of linear spans:
+\begin{proposition}
+  Suppose $V$ is a linear span in $\mathbb{R}^n$, then
+  \begin{itemize}
+    \item $\langle V \rangle = V$.
+    \item If $S \subset V$, then $\langle S \rangle \subset V$.
+  \end{itemize}
+\end{proposition}
+The second property leads to another definition of the linear span of a subset in $\mathbb{R}$:
+\begin{definition}[Linear Span (Or Linear Hull)]
+  The linear span of a subset $S \subset \mathbb{R^n}$ is the intersection of 
+  all linear spans in $\mathbb{R}^n$ that contains $S$:
+  \[
+    \langle S \rangle = \bigcap_{S \subset V} V
+  \]
+\end{definition}
+\begin{proof}
+  Hint:
+  \begin{itemize}
+    \item $\langle S \rangle \subset \bigcap_{S \subset V} V$
+    \item $\bigcap_{S \subset V} V \subset \langle S \rangle$
+    \item $\bigcap_{S \subset V} V$ is a linear span
+  \end{itemize}
+\end{proof}
+
+\section{Linear Dependence}
+
+\begin{definition}[Linear Independent \& Linear Dependent]
+  
+\end{definition}
+\begin{remark}
+  The order of the vectors doesn't affect linear independence because the 
+  addition operation in the vector space holds the commutative property.
+\end{remark}
+
+\section{Base and Dimension}
+
+\end{document}
