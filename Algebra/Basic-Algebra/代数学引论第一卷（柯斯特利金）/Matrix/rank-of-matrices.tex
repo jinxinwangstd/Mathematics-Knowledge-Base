@@ -1,0 +1,196 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\DeclareMathOperator{\rank}{rank}
+
+\title{Notes of "Rank of Matrices"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Retrospective of Linear System}
+
+With the notion of linear span, we have a new perspective of a linear system:
+
+In a $m$-dimensional column vector space $\mathbb{R}^m$, consider a subset A with $n$ vectors
+\[
+  A^{(j)} = \lbrack a_{1j}, a_{2j}, \ldots, a_{mj} \rbrack , j = 1, 2, \ldots, n
+\]
+and their linear span
+\[
+  V = \langle A \rangle = \langle A^{(1)}, A^{(2)}, \ldots, A^{(n)} \rangle
+\]
+For a given vector $B \in \mathbb{R}^m$, two natural questions are as follows:
+\begin{enumerate}
+  \item Whether it is true that $B \in V$?
+  \item If so, how to express $B$ as a linear combination of vectors in $A$?
+\end{enumerate}
+\begin{remark}
+  If $\dim V = n$, then $A = \lbrace A^{(1)}, A^{(2)}, \ldots, A^{(n)} \rbrace$ 
+  is a base of $V$. Then the second question above is equivalent to find the 
+  coordinate of $B$ under the base $A$.
+\end{remark}
+
+Formulate the above two questions in equations:
+\begin{equation}
+  x_1 \begin{pmatrix}
+    a_{11} \\
+    a_{21} \\
+    \vdots \\
+    a_{m1}
+  \end{pmatrix} + 
+  x_2 \begin{pmatrix}
+    a_{12} \\
+    a_{22} \\
+    \vdots \\
+    a_{m2}   
+  \end{pmatrix} + 
+  \cdots + 
+  x_n \begin{pmatrix}
+    a_{1n} \\
+    a_{2n} \\
+    \vdots \\
+    a_{mn}      
+  \end{pmatrix} = 
+  \begin{pmatrix}
+    b_{1} \\
+    b_{2} \\
+    \vdots \\
+    b_{m}         
+  \end{pmatrix}
+\end{equation}
+which is equivalent to a linear system:
+\begin{equation}
+  \begin{cases}
+    a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n = b_1 \\
+    a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n = b_2 \\
+    \cdots \\
+    a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n = b_m 
+  \end{cases}
+\end{equation}
+
+Another perspective of a linear system that we already know is the matrix form:
+\begin{equation}
+  AX = B
+\end{equation}
+with the coefficient matrix
+\begin{equation}
+  A =
+  \begin{pmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & a_{2n} \\
+    \cdots
+    a_{m1} & a_{m2} & \cdots & a_{mn} \\
+  \end{pmatrix}
+\end{equation}
+and the augmented matrix
+\begin{equation}
+  (A | B)
+\end{equation}
+
+\section{Rank of Matrices}
+\begin{definition}[Column Space, Column Rank, Row Space, and Row Rank of a Matrix]
+  Suppose $A$ is a $m \times n$ matrix
+  $V_c(A) = \langle A^{(1)}, A^{(2)}, \ldots, A^{(n)}\rangle$
+
+  $r_c(A) = dim V_c(A)$
+
+  $V_r(A) = \langle A_{(1)}, A_{(2)}, \ldots, A_{(n)}\rangle $
+
+  $r_r(A) = dim V_r(A)$
+\end{definition}
+\begin{remark}
+  According to Theorem 2 in the Notes of "Vector Space of Rows and Columns", the 
+  dimension of a linear span is determined, then our notion of column rank and 
+  row rank of a matrix is well defined, because the definitions of column rank 
+  and row rank of a matrix rely on the linear span of column vectors and row 
+  vectors of the matrix. In other words, these properties of a 
+  matrix exists.
+\end{remark}
+
+前面学到过，我们可以对系数矩阵进行两种初等变换，将其化为阶梯型矩阵。注意到关于初等变化的一个重要事实：两类初等变换都是inversible. More 
+specifically, the matrix $A'$ transformed from a matrix $A$ with elementary row 
+operations can be transformed back to $A$ with the same type of elementary row 
+operations.
+
+The above fact leads to the following important observation about the effect of 
+elementary row operations on the column rank and row rank of a matrix.
+\begin{lemma}
+  If a matrix $A'$ is transformed from a matrix $A$ through finite number of 
+  elementary row operations, it holds that
+  \[
+    r_c(A') = r_c(A)
+  \]
+  \[
+    r_r(A') = r_r(A)
+  \]
+\end{lemma}
+\begin{proof}
+  Hint: 同解性
+\end{proof}
+
+The above lemma helps us answer a natural and important question: whether the 
+row rank and the column rank of a matrix is equal or not?
+\begin{theorem}
+  For a $m \times n$ matrix $A$, it always holds that
+  \[
+    r_c(A) = r_r(A)
+  \]
+\end{theorem}
+\begin{proof}
+  Hint: 化为阶梯型
+\end{proof}
+
+\begin{definition}[Rank of a Matrix]
+  The rank of a matrix $A$, denoted by $\rank A$, is equal to its column rank, 
+  as well as its row rank.
+  \[
+    \rank A = r_c(A) = r_r(A)
+  \]
+\end{definition}
+\begin{remark}
+  一个矩阵的秩是唯一确定的，是它的内在特征，不依赖于任何外界情况。
+\end{remark}
+
+\section{Application: Solvable Criterion of a Linear System}
+
+Through transforming a linear system to its row reduce echelon form, we can 
+already answer the solvable question of a linear system.
+
+\begin{corollary}
+  The number of the major unknowns in a homogenous linear system doesn't rely on 
+  the way how it reaches the row reduced echelon form. It is always equal to the 
+  rank of its coefficient matrix.
+\end{corollary}
+\begin{proof}
+  Hint: The number of non-zero rows in the row reduced echelon form.
+\end{proof}
+
+\begin{theorem}[Rouché–Capelli theorem or Kronecker–Capelli theorem]
+  A linear system is solvable if and only if the rank of its coefficient matrix 
+  is equal to the rank of its augmented matrix.
+\end{theorem}
+\end{document}
