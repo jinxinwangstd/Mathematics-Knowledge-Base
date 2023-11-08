@@ -17,10 +17,14 @@
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
 \newtheorem{corollary}{Corollary}
 \newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
 
-\title{空间解析几何笔记}
+\DeclareMathOperator{\rank}{rank}
+
+\title{Notes of "Analytic Geometry in $\mathbb{R}^3$"}
 \author{Jinxin Wang}
 \date{}
 
@@ -32,15 +36,82 @@
 
 \section{平面方程}
 
+\subsection{Equation of a Plane}
+
+\begin{theorem}
+  Given the equation of a plane in the general form: $Ax + By + Cz + D = 0$, a 
+  vector $\vec{u} = (u_x, u_y, u_z)$ is parallel to the plane if and only if
+  \begin{equation}
+    Au_x + Bu_y + Cu_z = 0
+  \end{equation}
+\end{theorem}
+\begin{proof}
+  Hint:
+\end{proof}
+
+\subsection{Positional Relationship between Planes}
+There are only two kinds of positional relationships between planes:
+\begin{itemize}
+  \item Parallel
+  \item Intersected
+\end{itemize}
+
+\begin{example}
+  The intersection of three planes $\pi_1: $, $\pi_2: $, $\pi_3$ is unique $\Leftrightarrow$
+  $\begin{vmatrix}
+    A_1 & B_1 & C_1 \\
+    A_2 & B_2 & C_2 \\
+    A_3 & B_3 & C_3
+  \end{vmatrix} \neq 0$
+\end{example}
+
+\subsection{Geometric Interpretation of Linear Inequality with 3 Unknowns}
+
 \section{直线方程}
 
-\subsection{直线的两类方程}
+\subsection{Two Types of Equation of a Line}
 
-\subsubsection{点向式方程}
+\subsubsection{The Point-Direction Form of Line Equation}
 
-\subsubsection{一般方程}
+\subsubsection{The General Form of Line Equation}
 
-\subsubsection{两类方程的相互转化}
+\subsubsection{Transformation between Two Types of Line Equations}
+
+Given $\frac{x - x_0}{u_x} = \frac{y - y_0}{u_y} = \frac{z - z_0}{u_z}$, 
+the equivalent general form is
+\[
+  \begin{cases}
+    \frac{x - x_0}{u_x} = \frac{y - y_0}{u_y} \\
+    \frac{y - y_0}{u_y} = \frac{z - z_0}{u_z}
+  \end{cases}
+\]
+\begin{equation}
+  \begin{cases}
+    u_y x - u_x y + u_x y_0 - u_y x_0 = 0 \\
+    u_z y - u_y z + u_y z_0 - u_z y_0 = 0
+  \end{cases} 
+\end{equation}
+
+Given $\begin{cases}
+  A_1 x + B_1 y + C_1 z + D_1 = 0 \\
+  A_2 x + B_2 y + C_2 z + D_2 = 0
+\end{cases}$, we can find a point $(x_0, y_0, z_0)$ on the line, and the 
+direction vector it is parallel to:
+\begin{equation}
+  (
+  \begin{vmatrix}
+    B_1 & C_1 \\
+    B_2 & C_2
+  \end{vmatrix},
+  \begin{vmatrix}
+    C_1 & A_1 \\
+    C_2 & A_2
+  \end{vmatrix},
+  \begin{vmatrix}
+    A_1 & B_1 \\
+    A_2 & B_2
+  \end{vmatrix})
+\end{equation}
 
 \subsection{直线与平面的位置关系}
 位置关系：
@@ -50,13 +121,65 @@
   \item 相交
 \end{itemize}
 
-\subsubsection{平行和重合}
+\subsubsection{The Point-Direction Form}
 
-\subsubsection{相交}
 
-当直线与平面相交时，求交点：
+\subsubsection{The General Form}
+
+Suppose the equation in the general form of a line $l$ is $
+\begin{cases}
+  A_1 + B_1 + C_1 + D_1 = 0 \\
+  A_2 + B_2 + C_2 + D_2 = 0
+\end{cases}$, and the equation of a plane $\pi$ is $A_3 + B_3 + C_3 + D_3 = 0$, 
+then to determine the positional relationship between them, our method is to 
+transform the problem into studying the relationship between the three planes:
+\begin{proposition}
+  \begin{itemize}
+    \item $l \parallel \pi \wedge l \nsubseteq \pi $ $\Leftrightarrow$ $
+    \begin{cases}
+      A_1 + B_1 + C_1 + D_1 = 0 \\
+      A_2 + B_2 + C_2 + D_2 = 0 \\
+      A_3 + B_3 + C_3 + D_3 = 0
+    \end{cases}$ has no solution.
+    \item $l$ intersected with $\pi$ $\Leftrightarrow$ $
+    \begin{cases}
+      A_1 + B_1 + C_1 + D_1 = 0 \\
+      A_2 + B_2 + C_2 + D_2 = 0 \\
+      A_3 + B_3 + C_3 + D_3 = 0
+    \end{cases}$ has a unique solution $\Leftrightarrow$ $
+    \begin{vmatrix}
+      A_1 & B_1 & C_1 \\
+      A_2 & B_2 & C_2 \\
+      A_3 & B_3 & C_3 
+    \end{vmatrix} \neq 0$
+    \item $l \subset \pi$ $\Leftrightarrow$ $
+    \begin{cases}
+      A_1 + B_1 + C_1 + D_1 = 0 \\
+      A_2 + B_2 + C_2 + D_2 = 0 \\
+      A_3 + B_3 + C_3 + D_3 = 0
+    \end{cases}$ has infinitely many solutions.
+  \end{itemize}
+\end{proposition}
 
 \subsection{共轴平面系}
+We can approach the relationship that a line belongs to a plane in another 
+direction:
+\begin{proposition}
+  Suppose the equation in the general form of a line $l$ is $
+  \begin{cases}
+    A_1 + B_1 + C_1 + D_1 = 0 \\
+    A_2 + B_2 + C_2 + D_2 = 0
+  \end{cases}$, and the equation of a plane $\pi$ is $A_3 + B_3 + C_3 + D_3 = 0$, 
+  then $l \subset \pi$ $\Leftrightarrow$ $\exists \lambda, \mu$ which at least 
+  one of them are non-zero such that
+  \begin{equation}
+    \lambda (A_1 + B_1 + C_1 + D_1) + \mu (A_2 + B_2 + C_2 + D_2 = 0) = A_3 + B_3 + C_3 + D_3 = 0
+  \end{equation}
+\end{proposition}
+
+\begin{definition}[共轴平面系]
+  
+\end{definition}
 
 \subsection{直线与直线的位置关系}
 两直线间的位置关系总览，同时也是一种判断两条直线的位置关系的流程：
@@ -72,6 +195,44 @@
     \item 异面
   \end{itemize}
 \end{itemize}
+
+\subsubsection{The Point-Direction Form}
+
+$l_1 \parallel l_2$ $\Leftrightarrow$ $u_1 \parallel u_2$
+
+$l_1$与$l_2$异面 $\Leftrightarrow$ $(\vec{M_1M_2}, u_1, u_2) \neq 0$
+
+\begin{proof}
+  
+\end{proof}
+
+\subsubsection{The General Form}
+
+$l_1 \parallel l_2$ $\Leftrightarrow$ $
+\begin{vmatrix}
+  A_1 & B_1 & C_1 \\
+  A_2 & B_2 & C_2 \\
+  A_3 & B_3 & C_3 
+\end{vmatrix} = 
+\begin{vmatrix}
+  A_1 & B_1 & C_1 \\
+  A_2 & B_2 & C_2 \\
+  A_4 & B_4 & C_4  
+\end{vmatrix} = 0$
+
+$l_1$与$l_2$异面 $\Leftrightarrow$ $
+\begin{vmatrix}
+  A_1 & B_1 & C_1 & D_1 \\
+  A_2 & B_2 & C_2 & D_2 \\
+  A_3 & B_3 & C_3 & D_3 \\
+  A_4 & B_4 & C_4 & D_4
+\end{vmatrix} \neq 0$
+
+\begin{proof}
+  
+\end{proof}
+
+\subsection{Application: Find the Equation of Lines or Planes with Certain Positional Relationships}
 
 \section{有关平面和直线的度量关系}
 
@@ -217,15 +378,48 @@ Geometric interpretation of ruled surface: 由一簇直线构成的曲面叫做�
 
 \subsection{Quadric Cylindrical Surface二次柱面}
 
-Based on the geometric interpretation of cylindrical surfaces, they are a kind of ruled surface.
+Based on the geometric interpretation of cylindrical surfaces, they are a kind 
+of ruled surface.
 
 \subsection{Quadric Conical Surface二次锥面}
 
-Based on the geometric interpretation of conical surfaces, they are a kind of ruled surface.
+Based on the geometric interpretation of conical surfaces, they are a kind of 
+ruled surface.
 
 \subsection{Hypobolic Paraboloid双曲抛物面}
 
 \subsection{Hyperboloid of One Sheet单叶双曲面}
+
+\subsubsection{Equation of Generatrix in Hyperboloid of One Sheet}
+
+Given the standard equation of a hyperboloid of one sheet:
+\begin{equation}
+  \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1
+\end{equation}
+\begin{equation}
+  (\frac{x}{a} + \frac{z}{c})(\frac{x}{a} - \frac{z}{c}) = (1 + \frac{y}{b})(1 - \frac{y}{b})
+\end{equation}
+
+\subsubsection{Property of Generatrix in Hyperboloid of One Sheet}
+
+\subsection{Identification of Ruled Quadric Surface}
+
+There are only four kinds of ruled quadric surface except those within a plane:
+\begin{itemize}
+  \item Quadric Cylindrical Surface
+  \item Quadric Conical Surface
+  \item Hypobolic Paraboloid
+  \item Hyperboloid of One Sheet
+\end{itemize}
+
+We can use the characteristics of these four kinds of ruled quadric surface to 
+differentiate them and identify a random ruled quadric surface:
+\begin{itemize}
+  \item Parallelism of generatrix: There exist parallel generatrix in 
+  hyperboloid of one sheet, but any two generatrix in hypobolic paraboloid are 
+  not parallel.
+  \item Parallelism between generatrix and planes: 
+\end{itemize}
 
 \section{方法与技巧}
 
