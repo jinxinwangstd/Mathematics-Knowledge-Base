@@ -511,6 +511,15 @@ paraboloid:
   \end{split}
 \end{equation}
 
+Rewrite the equations of the two collections of straight generatrix in the
+point-direction form.
+
+$l_c$ passes through the point $M_c(ac, 0, \frac{c^2}{2})$, and is parallel to 
+the vector $\vec{u_c}(-a, b, -c)$.
+
+$l_c'$ passes through the point $M_c'(ac, 0, \frac{c^2}{2})$, and is parallel to 
+the vector $\vec{u_c}(a, b, c)$.
+
 \subsubsection{Properties of Generatrix in Hypobolic Paraboloid}
 \begin{itemize}
   \item For every point $P \in S$, each collection of straight generatrix has 
@@ -549,6 +558,76 @@ Given the standard equation of a hyperboloid of one sheet:
 \end{equation}
 
 It is apparent that each straight generatrix one-to-one corresponds to a value of $s:t$ where
+
+\begin{equation}
+  l_{\theta} =
+  \begin{cases}
+    \cos\theta(\frac{x}{a} + \frac{z}{c}) = \sin\theta(1 + \frac{y}{b}) \\
+    \sin\theta(\frac{x}{a} - \frac{z}{c}) = \cos\theta(1 - \frac{y}{b})
+  \end{cases}
+\end{equation}
+\begin{equation}
+  l_{\theta}' =
+  \begin{cases}
+    \cos\theta(\frac{x}{a} + \frac{z}{c}) = \sin\theta(1 - \frac{y}{b}) \\
+    \sin\theta(\frac{x}{a} - \frac{z}{c}) = \cos\theta(1 + \frac{y}{b})
+  \end{cases}
+\end{equation}
+
+\begin{remark}
+  
+\end{remark}
+
+Rewrite the equations of the two collections of straight generatrix in the
+point-direction form. Take $l_{\theta}$ as an example:
+\[
+  l_{\theta} =
+  \begin{cases}
+    \frac{\cos\theta}{a} x - \frac{\sin\theta}{b} y + \frac{\cos\theta}{c} z = \sin\theta \\
+    \frac{\sin\theta}{a} x + \frac{\cos\theta}{b} y - \frac{\sin\theta}{c} z = \cos\theta
+  \end{cases} 
+\]
+Let $z = 0$, then we solve the following linear system with two equations and two 
+unknowns
+\begin{equation} \label{eq:15}
+  \begin{cases}
+    \frac{\cos\theta}{a} x - \frac{\sin\theta}{b} y = \sin\theta \\
+    \frac{\sin\theta}{a} x + \frac{\cos\theta}{b} y = \cos\theta
+  \end{cases}  
+\end{equation}
+and find the only solution $x = a\sin2\theta, y = b\cos2\theta$. Therefore, the 
+straight generatrix $l_{\theta}$ pass through the point 
+$M_{\theta}(a\sin2\theta, b\cos2\theta, 0)$.
+
+Besides, $l_{\theta}$ is parallel to the vector $\vec{u_{\theta}}(
+\begin{vmatrix}
+  -\frac{\sin\theta}{b} & \frac{\cos\theta}{c} \\
+  \frac{\cos\theta}{b} & -\frac{\sin\theta}{c}
+\end{vmatrix},
+\begin{vmatrix}
+  \frac{\cos\theta}{c} & \frac{\cos\theta}{a} \\
+  -\frac{\sin\theta}{c} & \frac{\sin\theta}{a}
+\end{vmatrix},
+\begin{vmatrix}
+  \frac{\cos\theta}{a} & -\frac{\sin\theta}{b} \\
+  \frac{\sin\theta}{a} & \frac{\cos\theta}{b}
+\end{vmatrix}
+)$, which is \\ $\vec{u_{\theta}}(-\frac{\cos2\theta}{bc}, 
+\frac{\sin2\theta}{ac}, \frac{1}{ab})$, or in better form $\vec{u_{\theta}}
+(-a\cos2\theta, b\sin2\theta, c)$.
+
+\begin{remark}
+  Previously I had this doubt that why $l_\theta$ passes through the point 
+  $M_\theta$ instead of any other points or more points in the $xOy$ plane. 
+  Based on the equation (\ref{eq:15}), there is only one solution, which means 
+  $l_\theta$ has only one intersection point with the $xOy$ plane. Geometrically 
+  it also makes sense since $l_\theta$ is not parallel to the $xOy$ plane given 
+  its $z$-component is non-zero.
+\end{remark}
+
+Similarly, we can find that $l_\theta'$ passes through the point $M_\theta'
+(a\sin2\theta, -b\cos2\theta, 0)$, and is parallel to the vector 
+$\vec{u_\theta'}(a\cos2\theta, b\sin2\theta, -c)$.
 
 \subsubsection{Properties of Generatrix in Hyperboloid of One Sheet}
 \begin{itemize}
