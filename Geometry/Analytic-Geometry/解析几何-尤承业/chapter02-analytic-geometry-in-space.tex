@@ -173,7 +173,7 @@ direction:
   then $l \subset \pi$ $\Leftrightarrow$ $\exists \lambda, \mu$ which at least 
   one of them are non-zero such that
   \begin{equation}
-    \lambda (A_1 + B_1 + C_1 + D_1) + \mu (A_2 + B_2 + C_2 + D_2 = 0) = A_3 + B_3 + C_3 + D_3 = 0
+    \lambda (A_1 + B_1 + C_1 + D_1) + \mu (A_2 + B_2 + C_2 + D_2 = 0) = A_3 + B_3 + C_3 + D_3
   \end{equation}
 \end{proposition}
 
@@ -233,6 +233,23 @@ $l_1$与$l_2$异面 $\Leftrightarrow$ $
 \end{proof}
 
 \subsection{Application: Find the Equation of Lines or Planes with Certain Positional Relationships}
+
+\begin{example}
+  在一个仿射坐标系中，直线$l_1$有一般方程$
+  \begin{cases}
+    x - y + z - 1 = 0 \\
+    y + z = 0
+  \end{cases}$，直线$l_2$过点$M(0, 0, -1)$，平行于向量$\vec{u}(2, 1, -2)$。平面$\pi$的方程为$x + 
+  y + z = 0$。求由全体与$l_1, l_2$都相交，并且平行于$\pi$的直线所构成的曲面$S$的方程。
+
+  Solution:
+  \begin{itemize}
+    \item 平面参数法
+    \item 直线参数法
+    \item 双直线参数法
+    \item 轨迹法
+  \end{itemize}
+\end{example}
 
 \section{有关平面和直线的度量关系}
 
@@ -301,9 +318,62 @@ $l_1$与$l_2$异面 $\Leftrightarrow$ $
 
 \section{旋转面、柱面和锥面}
 
+Generally speaking, 建立一个几何图形的一般方程，要找出图形上点的几何特征，然后将它转化为坐标所要满足的条件，就得到了图形的一般方程。
+
 \subsection{Surface of Revolution旋转面}
 
+\subsubsection{Definition of Surface of Revolution and its Geometric Elements}
+
+\subsubsection{General Method to Find the Equation of a Surface of Revolution}
+
+Given the axis of rotation $l$ and a generatrix $\varGamma$ of a surface of revolution $S$:
+\begin{equation}
+  M \in S \Leftrightarrow \exists M' \in \varGamma \textnormal{s.t.} \vec{MM'} \perp l \wedge d(M, l) = d(M', l)
+\end{equation}
+
+\subsubsection{Surface of Revolution with Straight Generatrix}
+\begin{itemize}
+  \item cylinder
+  \begin{itemize}
+    \item Generation: A straight generatrix rotating by an axis parallel to the generatrix
+    \item Geometric elements: the axis of rotation and the radius.
+  \end{itemize}
+  \item cone
+  \begin{itemize}
+    \item Generation: A straight generatrix rotating by an axis intersecting the generatrix
+    \item Geometric elements: the axis of rotation, the vertex, and the half-angle
+  \end{itemize}
+  \item Rotated hyperboloid of one sheet
+  \begin{itemize}
+    \item Generation: A straight generatrix rotating by an axis skew with the generatrix and not perpendicular with it.
+    \item Geometric elements: the axis of rotation and the generatrix
+  \end{itemize}
+  \item plane with a circular hole
+  \begin{itemize}
+    \item Generation: A straight generatrix rotating by an axis skew and perpendicular with it.
+  \end{itemize}
+\end{itemize}
+
 \subsection{Cylindrical Surface柱面}
+
+\subsubsection{General Method to Find the Equation of a Cylindrical Surface}
+Given the vector $\vec{u}(u_x, u_y, u_z)$ to which the axis of rotation is parallel and the directrix $\varGamma$ whose equation is $
+\begin{cases}
+  F(x, y, z) = 0 \\
+  G(x, y, z) = 0
+\end{cases}$ of a cylindrical surface $S$, then for any point $M(x, y, z)$
+\begin{equation}
+  \begin{split}
+    M \in S &\Leftrightarrow \exists M' \in \varGamma \thickspace \textnormal{s.t.} \thickspace \vec{MM'} \parallel \vec{u} \\
+            &\Leftrightarrow \exists M' \in \varGamma \thickspace \textnormal{s.t.} \thickspace \vec{MM'} = t\vec{u}, t \in \mathbb{R} \\
+            &\Leftrightarrow \exists t \in \mathbb{R} \thickspace \textnormal{s.t.} \thickspace 
+            \begin{cases}
+              F(x + t u_x, y + t u_y, z + t u_z) = 0 \\
+              G(x + t u_x, y + t u_y, z + t u_z) = 0
+            \end{cases}
+  \end{split}
+\end{equation}
+
 
 \subsection{Conical Surface锥面}
 
@@ -316,8 +386,23 @@ $l_1$与$l_2$异面 $\Leftrightarrow$ $
 
 The elements to determine a conical surface: the apex and the directrix.
 
-The process of deriving the equation of a conical surface given the apex and the 
-directrix:
+\subsubsection{General Method to Find the Equation of a Conical Surface}
+Given the apex $M_0(x_0, y_0, z_0)$ and the directrix $\varGamma$ whose equation is $
+\begin{cases}
+  F(x, y, z) = 0 \\
+  G(x, y, z) = 0
+\end{cases}$ of a conical surface $S$, then
+\begin{equation}
+  \begin{split}
+    M \in S &\Leftrightarrow \exists M' \in \varGamma \thickspace \textnormal{s.t.} \thickspace M, M', M_0 \textnormal{in the same line} \\
+            &\Leftrightarrow \exists M' \in \varGamma \thickspace \textnormal{s.t.} \thickspace \vec{OM'} = t\vec{OM} + (1 - t)\vec{OM_0}, t \in \mathbb{R} \\
+            &\Leftrightarrow \exists t \in \mathbb{R} \thickspace \textnormal{s.t.} \thickspace
+            \begin{cases}
+              F(tx + (1 - t)x_0, ty + (1 - t)y_0, tz + (1 - t)z_0) = 0 \\
+              G(tx + (1 - t)x_0, ty + (1 - t)y_0, tz + (1 - t)z_0) = 0
+            \end{cases}
+  \end{split}
+\end{equation}
 
 \begin{remark}
   The equation derived by the above process doesn't include the apex in its zero 
@@ -388,6 +473,55 @@ ruled surface.
 
 \subsection{Hypobolic Paraboloid双曲抛物面}
 
+\subsubsection{Equation of Generatrix in Hypobolic Paraboloid}
+
+Given the standard equation of a hypobolic paraboloid:
+\begin{equation}
+  \frac{x^2}{a^2} - \frac{y^2}{b^2} = 2z
+\end{equation}
+\[
+  (\frac{x}{a} + \frac{y}{b})(\frac{x}{a} - \frac{y}{b}) = 2z
+\]
+Let $c = \frac{x}{a} + \frac{y}{b}$, then the line with the equation
+\[
+  l_c = 
+  \begin{cases}
+    \frac{x}{a} + \frac{y}{b} = c \\
+    c(\frac{x}{a} - \frac{y}{b}) = 2z
+  \end{cases}
+\]
+belongs to the hypobolic paraboloid.
+
+Let $c = \frac{x}{a} - \frac{y}{b}$, then the line with the equation
+\[
+  l_c' = 
+  \begin{cases}
+    \frac{x}{a} - \frac{y}{b} = c \\
+    c(\frac{x}{a} + \frac{y}{b}) = 2z
+  \end{cases}
+\]
+belongs to the hypobolic paraboloid.
+
+Therefore, we find two collection of straight generatrix in the hypoboloic 
+paraboloid:
+\begin{equation}
+  \begin{split}
+    I = \lbrace l_c | c \in \mathbb{R} \rbrace
+    I' = \lbrace l_c' | c \in \mathbb{R} \rbrace
+  \end{split}
+\end{equation}
+
+\subsubsection{Properties of Generatrix in Hypobolic Paraboloid}
+\begin{itemize}
+  \item For every point $P \in S$, each collection of straight generatrix has 
+  exactly one generatrix passing through it.
+  \item Generatrix from the same collection is parallel to a plane.
+  \item Two generatrix from the same collection are skew with each other.
+  \item Generatrix from different collections intersect.
+  \item There is no straight generatrix belonging to both collections.
+  \item All straight generatrix in $S$ belong to either collection.
+\end{itemize}
+
 \subsection{Hyperboloid of One Sheet单叶双曲面}
 
 \subsubsection{Equation of Generatrix in Hyperboloid of One Sheet}
@@ -396,11 +530,36 @@ Given the standard equation of a hyperboloid of one sheet:
 \begin{equation}
   \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1
 \end{equation}
-\begin{equation}
+\[
   (\frac{x}{a} + \frac{z}{c})(\frac{x}{a} - \frac{z}{c}) = (1 + \frac{y}{b})(1 - \frac{y}{b})
+\]
+\begin{equation}
+  l_{s:t} =
+  \begin{cases}
+    s(\frac{x}{a} + \frac{z}{c}) = t(1 + \frac{y}{b}) \\
+    t(\frac{x}{a} - \frac{z}{c}) = s(1 - \frac{y}{b})
+  \end{cases}
+\end{equation}
+\begin{equation}
+  l_{s:t}' =
+  \begin{cases}
+    s(\frac{x}{a} + \frac{z}{c}) = t(1 - \frac{y}{b}) \\
+    t(\frac{x}{a} - \frac{z}{c}) = s(1 + \frac{y}{b})
+  \end{cases}
 \end{equation}
 
-\subsubsection{Property of Generatrix in Hyperboloid of One Sheet}
+It is apparent that each straight generatrix one-to-one corresponds to a value of $s:t$ where
+
+\subsubsection{Properties of Generatrix in Hyperboloid of One Sheet}
+\begin{itemize}
+  \item For every point $P \in S$, each collection of straight generatrix has 
+  exactly one generatrix passing through it.
+  \item Two generatrix from the same collection are skew with each other.
+  \item Three generatrix from the same collection are not parallel to a plane.
+  \item Generatrix from different collections are coplanar.
+  \item There is no straight generatrix belonging to both collections.
+  \item All straight generatrix in $S$ belong to either collection.
+\end{itemize}
 
 \subsection{Identification of Ruled Quadric Surface}
 
@@ -427,6 +586,12 @@ differentiate them and identify a random ruled quadric surface:
 \begin{itemize}
   \item 直线的一般方程+直线外一点坐标：共轴平面系
   \item 直线的点向式方程+直线外一点坐标：行列式
+\end{itemize}
+
+\subsection{求二次直纹面方程}
+\begin{itemize}
+  \item 表示为动平面交线，然后消参
+  \item 表示为动直线上的点，然后消参
 \end{itemize}
 
 \end{document}
