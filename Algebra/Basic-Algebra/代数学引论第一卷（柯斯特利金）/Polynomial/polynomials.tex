@@ -54,6 +54,10 @@
   \end{equation}
   $q(x)$ and $r(x)$ are uniquely determined. $r(x ) = 0$ or $\deg(r(x)) < \deg(g(x))$.
 \end{proposition}
+\begin{remark}[综合除法]
+  
+\end{remark}
+
 
 \begin{definition}[整除]
   
@@ -69,19 +73,49 @@ Properties of Divisors:
 \section{最大公因式}
 
 \begin{definition}[Common Divisor and Greatest Common Divisor]
-  
+  If $\phi(x)$ is a divisor of both $f(x)$ and $g(x)$, we say it is a common 
+  divisor of $f(x)$ and $g(x)$.
+
+  Suppose $f(x) \in P\lbrack x \rbrack$ and $g(x) \in P\lbrack x \rbrack$. A 
+  polynomial $d(x) \in P\lbrack x \rbrack$ is the greatest common divisor of 
+  $f(x)$ and $g(x)$ if the following conditions are true:
+  \begin{itemize}
+    \item $d(x)$ is a common divisor of $f(x)$ and $g(x)$.
+    \item Every common divisor of $f(x)$ and $g(x)$ is a divisor of $d(x)$.
+  \end{itemize}
 \end{definition}
+\begin{remark}
+  Since $\forall f(x) \in P\lbrack x \rbrack$ is a divisor of the zero 
+  polynomial, in other words $0 = 0 \cdot f(x)$, the greatest common divisor of 
+  $f(x)$ and $0$ is $0$. Especially, the greatest common divisor of $0$ and $0$ 
+  is $0$, which is in accordance with the definition of GCD.
+\end{remark}
 
 \begin{lemma}[Common Divisors in Euclidean Division]
-  $f(x)$ and $g(x)$, $g(x)$ and $r(x)$ have the same common divisors.
+  If it holds that $f(x) = q(x)g(x) + r(x)$ for $f(x) \in P\lbrack x \rbrack$ 
+  and $g(x) \in P\lbrack x \rbrack$, then the two pairs of polynomials $(f(x), 
+  g(x))$ and $(g(x), r(x))$ have the same common divisors.
 \end{lemma}
+\begin{proof}
+  
+\end{proof}
 
 \begin{theorem}[Theorem of Polynomial Greatest Common Divisor]
-  
+  $\forall f(x) \in P\lbrack x \rbrack$ and $\forall g(x) \in P\lbrack x \rbrack$, 
+  there exists $d(x) \in P\lbrack x \rbrack$ that is the greatest common divisor 
+  of $f(x)$ and $g(x)$, and $d(x)$ can be expressed as a combination of $f(x)$ 
+  and $g(x)$, which is $\exists u(x) \in P\lbrack x \rbrack, v(x) \in P\lbrack x 
+  \rbrack$ such that
+  \[
+    d(x) = u(x)f(x) + v(x)g(x)
+  \]
 \end{theorem}
+\begin{proof}
+  (TODO)
+\end{proof}
 
-\begin{example}[Euclid's Algorithm]
+\begin{remark}[Euclid's Algorithm]
   
-\end{example}
+\end{remark}
 
 \end{document}
