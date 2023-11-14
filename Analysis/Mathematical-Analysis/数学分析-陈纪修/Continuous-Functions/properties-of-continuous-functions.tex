@@ -41,8 +41,14 @@
 \end{theorem}
 
 \begin{corollary}
-  
+  If the function $\phi$ is continuous on an open interval and assumes values 
+  $\phi(a) = A$ and $\phi(b) = B$ at points $a$ and $b$, then for any number $C$ 
+  between $A$ and $B$, there is a point $c$ between $a$ and $b$ at which 
+  $\phi(c) = C$.
 \end{corollary}
+\begin{proof}
+  
+\end{proof}
 
 \begin{theorem}[The Weierstrass Maximum-Value Theorem]
   
@@ -97,7 +103,15 @@
 \end{proposition}
 
 \begin{theorem}[The Inverse Function Theorem]
-  A function $f:X \to \mathbb{R}$ that is strictly monotonic
+  A function $f:X \to \mathbb{R}$ that is strictly monotonic on a set $X \subset 
+  \mathbb{R}$ has an inverse $f^{-1}: Y \to \mathbb{R}$ defined on the set $Y = 
+  f(X)$ of values of $f$, and has the same kind of monotonicity on $Y$ that $f$ 
+  has on $X$.
+
+  If in addition $X$ is a closed interval $\lbrack a,b \rbrack$ and $f$ is 
+  continuous on $X$, then the set $Y = f(X)$ is the closed interval with 
+  endpoints $f(a)$ and $f(b)$ and the function $f^{-1}: Y \to \mathbb{R}$ is 
+  continuous on it.
 \end{theorem}
 
 \end{document}
