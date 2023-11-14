@@ -160,8 +160,20 @@
 \subsection{The Limit of a Monotonic Function}
 
 \begin{definition}[Monotonic Functions]
-  
+  A function $f:E \to \mathbb{R}$ defined on a set $E \subset \mathbb{R}$ is 
+  said to be
+  \begin{itemize}
+    \item increasing if $\forall x_1, x_2 \in E (x_1 < x_2 \Rightarrow f(x_1) < f(x_2))$
+    \item nondecreasing if $\forall x_1, x_2 \in E (x_1 < x_2 \Rightarrow f(x_1) \leq f(x_2))$
+    \item decreasing if $\forall x_1, x_2 \in E (x_1 < x_2 \Rightarrow f(x_1) > f(x_2))$
+    \item nonincreasing if $\forall x_1, x_2 \in E (x_1 < x_2 \Rightarrow f(x_1) \geq f(x_2))$
+  \end{itemize}
 \end{definition}
+\begin{remark}
+  Be mindful of that the monotonicity is defined on the complete domain of the 
+  definition, and thus the condition is $\forall x_1, x_2 \in E$ no matter what 
+  a set $E$ is.
+\end{remark}
 
 \begin{theorem}[The Existence Criterion of the Limit of a Monotonic Function]
   
