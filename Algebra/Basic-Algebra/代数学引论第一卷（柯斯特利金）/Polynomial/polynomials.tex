@@ -55,7 +55,28 @@
   $q(x)$ and $r(x)$ are uniquely determined. $r(x ) = 0$ or $\deg(r(x)) < \deg(g(x))$.
 \end{proposition}
 \begin{remark}[综合除法]
-  
+  对于除式是次数为1的多项式的情况，我们有一个快速进行带余除法的技巧，叫做综合除法。它基于以下观察
+  \[
+    f(x) = \Sigma_{i=0}^n a_i x^i, g(x) = x - c, q(x) = \Sigma_{i=0}^{n-1} b_i x^i, r(x) = r
+  \]
+  \[
+    q(x)g(x) + r(x) = b_{n-1} x^n + (b_{n-2} - c b_{n-1}) x^{n-1} + (b_{n-3} - c b_{n-2}) x^{n-2} + \cdots + (b_0 - c b_1) x + r - c b_0 = \Sigma_{i=0}^n a_i x^i = f(x)
+  \]
+  则系数间有如下关系:
+  \[
+    \begin{cases}
+      b_{n-1} = a_n \\
+      b_{n-2} = a_{n-1} + c b_{n-1} \\
+      b_{n-3} = a_{n-2} + c b_{n-2} \\
+      \ldots \\
+      b_1 = a_2 + c b_2 \\
+      b_0 = a_1 + c b_1 \\
+      r = a_0 + c b_0
+    \end{cases}
+  \]
+  根据上述关系，我们可以快速得到带余除法的结果。
+
+  注意上述关系只在除式$g(x) = x + c$即一次项系数为$1$才成立，对于一次项系数不是$1$的除式，则有$g(x) = c_1 x + c_0 = c_1 (x + \frac{c_0}{c_1}) = c_1 g'(x)$.
 \end{remark}
 
 
@@ -118,4 +139,43 @@ Properties of Divisors:
   
 \end{remark}
 
+\begin{definition}[Coprime]
+  (f(x), g(x)) = 1
+\end{definition}
+
+\begin{theorem}[互素的等价条件]
+  \[
+    ((f(x), g(x)) = 1) \Leftrightarrow u(x)f(x) + v(x)g(x) = 1
+  \]
+\end{theorem}
+\begin{remark}
+  This theorem contains a kind of symmetry because both $f(x)$ and $g(x)$ and $u(x)$ and $v(x)$ are coprime.
+\end{remark}
+
+\begin{theorem}
+  If $(f(x), g(x)) = 1$, and $f(x) | g(x)h(x)$, then $f(x) | h(x)$.
+\end{theorem}
+
+\begin{corollary}
+  If $f_1(x) | g(x)$, $f_2(x) | g(x)$, and $(f_1(x), f_2(x)) = 1$, then $f_1(x)f_2(x) | g(x)$.
+\end{corollary}
+
+上述结论均可推广到多个多项式。
+
+\section{因式分解定理}
+\begin{definition}[不可约多项式]
+  
+\end{definition}
+
+\begin{theorem}[不可约多项式作因式]
+  
+\end{theorem}
+
+\begin{theorem}[因式分解定理]
+  
+\end{theorem}
+
+\section{重因式}
+
+\section{多项式函数}
 \end{document}
