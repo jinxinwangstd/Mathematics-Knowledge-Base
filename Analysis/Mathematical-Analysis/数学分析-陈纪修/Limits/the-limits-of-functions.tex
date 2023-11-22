@@ -37,6 +37,10 @@
 
 \begin{definition}[The Limit of a Function (Basic Type)]
   ($\epsilon$-$\delta$)
+
+  \begin{equation}
+    \forall \epsilon > 0, \exists \delta > 0, \forall x \in E (0 < |x - a| < \delta \Rightarrow |f(x) - A| < \epsilon)
+  \end{equation}
 \end{definition}
 
 \begin{remark}
@@ -47,12 +51,18 @@
 \end{remark}
 
 \begin{definition}[去心邻域]
-  
+  A deleted neighborhood of a point is a neighborhood of the point from which 
+  the point itself has been removed.
 \end{definition}
 
 \begin{definition}[函数极限的邻域定义]
-  
+  \begin{equation}
+    (\lim_{E \owns x \to a} f(x) = A) := \forall U_{\mathbb{R}}(A) \exists \dot{U}_E(a) (f(\dot{U}_E(a)) \subset U_{\mathbb{R}}(A))
+  \end{equation}
 \end{definition}
+\begin{remark}
+  If $f$ is convergent at $a$, $a$ must be a limit point of its domain $E$.
+\end{remark}
 
 \begin{example}[符号函数$\sgn x$]
   
@@ -68,7 +78,24 @@
 
 \section{Properties of the Limit of a Function}
 
+\begin{remark}
+  In order to establish the properties of the limit of a function, we need only 
+  two properties of deleted neighborhoods of a limit point of a set:
+  \begin{itemize}
+    \item $\dot{U}_E(a) \neq \emptyset$
+    \item $\forall \dot{U}_E^1(a) \dot{U}_E^2(a) \exists \dot{U}_E(a) 
+    (\dot{U}_E(a) \subset \dot{U}_E^1(a) \cap \dot{U}_E^2(a))$
+  \end{itemize}
+  This observation leads us to a general concept of a limit of a function and 
+  the possibility of using the theory of limits in the future not only for 
+  functions defined on sets of numbers.
+\end{remark}
+
 \subsection{General Properties}
+
+\begin{definition}[局部常值函数]
+  
+\end{definition}
 
 \begin{definition}[有界函数/局部有界函数，上有界函数/局部上有界函数，下有界函数/局部下有界函数]
   
@@ -76,11 +103,15 @@
 
 \begin{theorem}
   \begin{enumerate}
-    \item (局部常值函数收敛)
-    \item (局部有界)
-    \item (在某一点处极限值唯一)
+    \item (Ultimate Constant has the Limit) $(f:E \to \mathbb{R}$ is ultimately the constant $A$ as $E 
+    \owns x \to a)$ $\Rightarrow$ $\lim_{E \owns x \to a} f(x) = A$
+    \item (Ultimately Boundness of the Limit) $(\exists \lim_{E \owns x \to a} f(x))$ $\Rightarrow$ $(f: E \to \mathbb{R}$ is ultimately bounded as $E \owns x \to a)$
+    \item (Uniqueness of the Limit) $(\lim_{E \owns x \to a} f(x) = A_1) \wedge (\lim_{E \owns x \to a} f(x) = A_2)$ $\Rightarrow$ $A_1 = A_2$
   \end{enumerate}
 \end{theorem}
+\begin{proof}
+  
+\end{proof}
 
 \subsection{Properties Involving Arithmetic}
 
@@ -130,6 +161,26 @@
 \section{The General Definition of the Limit of a Function}
 
 \subsection{Definition and Examples of a Base}
+
+\begin{definition}
+  A set $\mathcal{B}$ of subsets $B \subset X$ of a set $X$ is called a base in 
+  $X$ if the following conditions hold:
+  \begin{itemize}
+    \item $\forall B \in \mathcal{B}$ $(B \neq \emptyset)$
+    \item $\forall B_1, B_2 \in \mathcal{B} \exists B \in \mathcal{B}$ $(B 
+    \subset B_1 \cap B_2)$
+  \end{itemize}
+\end{definition}
+
+Some useful bases in analysis
+\[
+  \begin{matrix}
+    x \to a & \textnormal{Deleted neighborhoods of } a \in \mathbb{R} & \dot{U}(a):= \lbrace x \in \mathbb{R} \mid a - \delta_1 < x < a + \delta_2 \wedge x \neq a, \delta_1 > 0, \delta_2 > 0\rbrace \\
+    x \to \infty & \textnormal{Neighborhoods of infinity} & U(\infty) := \lbrace x \in \mathbb{R} \mid |x| > \delta, \delta \in \mathbb{R} \rbrace \\
+    E \owns x \to a & \textnormal{Deleted neighborhoods of } a \in E \thickspace \textnormal{($a$ is a limit point of $E$)}) & \dot{U}_E(a) := E \cap \dot{U}(a) \\
+    E \owns x \to \infty & \textnormal{Neighborhoods of infinity} \in E \thickspace \textnormal{($E$ is not bounded)} & U_E(\infty) := E \cap U(\infty) \\
+  \end{matrix}
+\]
 
 \subsection{Limit over a Base}
 
