@@ -36,13 +36,171 @@
 
 \section{Matrix Multiplication}
 
+\subsection{Block Matrix Multiplication}
+
 \section{Matrix Transposition}
 
 \section{Rank of a Product of Matrices}
 
 \section{Square Matrix}
 
+\subsection{Commuting Matrices}
+
+\begin{definition}[Diagonal Matrix and Scalar Matrix]
+  A diagonal matrix is a a matrix in which all entries outside the main diagonal 
+  are all zero.
+\end{definition}
+
+\begin{definition}[Identity Matrix]
+  \begin{equation}
+    E = (\delta_{ij}), \delta_{ij} = 
+    \begin{cases}
+      1, i = j \\
+      0, i \neq j \\
+    \end{cases}
+  \end{equation}
+\end{definition}
+
+\begin{definition}[Scalar Matrix]
+  A scalar matrix is the result of the identity matrix multiplied with a scalar.
+\end{definition}
+
+\begin{definition}[Matrix Unit]
+  A matrix unit is a matrix with only one nonzero entry with value 1. The matrix 
+  unit with the nonzero entry in the $i$-th row and $j$-th column is denoted as 
+  $E_{ij}$
+\end{definition}
+\begin{remark}
+  A matrix unit is not necessarily a square matrix.
+\end{remark}
+
+\begin{definition}[Commuting Matrices]
+  Given two matrices $A, B \in M_n(\mathbb{R})$, $A$ and $B$ are said to commute 
+  if $AB = BA$, or equivalently their commutator $\lbrack A, B \rbrack = AB - BA 
+  = 0$.
+\end{definition}
+\begin{remark}
+  Notice that commuting matrices must be square matrix, because if $A \in M_{s 
+  \times n}, B \in M_{n \times r}, s \neq r$, then $AB \in M_{s \times r}, BA 
+  \in M_{r \times s}$, hence it is invalid to compare them.
+\end{remark}
+
+\begin{theorem}
+  If a matrix $A \in M_n(\mathbb{R})$ commutes with $\forall B \in 
+  M_n(\mathbb{R})$, then $A$ is a scalar matrix.
+\end{theorem}
+\begin{proof}
+  Hint:
+  \begin{itemize}
+    \item If $AE_{12} = E_{12}A$, then $\forall k \neq 1, a_{k1} = 0$, and 
+    $\forall k \neq 2, a_{2k} = 0$, and $a_{11} = a_{22}$.
+    \item If $AE_{ij} = E_{ij}A$, then $\forall k \neq i, a_{ki} = 0$, and 
+    $\forall k \neq j, a_{jk} = 0$, and $a_{ii} = a_{jj}$.
+    \item Consider $\forall B \in M_n{\mathbb{R}}, AB = BA$.
+  \end{itemize}
+\end{proof}
+\begin{remark}
+  When proving a property applies to any matrix in $M_{m \times n}$, one method 
+  is to consider all matrix units in $M_{m \times n}$, since the set of matrix 
+  units is a basis of $M_{m \times n}$.
+\end{remark}
+
+\subsection{Inverse Matrix}
+\begin{lemma}[Uniqueness of Inverse Matrix]
+  \[
+    A' = A'E = A'(AA'') = (A'A)A'' = A''
+  \]
+\end{lemma}
+\begin{definition}[Inverse Matrix]
+  
+\end{definition}
+
+\begin{definition}[Non-degenerate Matrix and Degenerate Matrix]
+  A matrix $A \in M_n(\mathbb{R})$ is non-degenerate if $\rank A = n$. $A$ is 
+  degenerate if $\rank A < n$.
+\end{definition}
+\begin{remark}
+  We only talk about non-degenerate matrices and degenerate matrices when it 
+  comes to square matrices.
+\end{remark}
+
+\begin{theorem}
+  $A \in M_n(\mathbb{R})$ is non-degenerate if and only if $A$ is inversible.
+\end{theorem}
+\begin{proof}
+  Hint: \\
+  $\Leftarrow$: Use the rank of the product of two matrices. \\
+  $\Rightarrow$: Use the unqiueness of the solution of $AX = 0$, and the 
+  transpose of the product of two matrices.
+\end{proof}
+
+\begin{corollary}
+  If $A \in M_n{\mathbb{R}}$ is inversible, then $A^T$ is inversible, and 
+  $(A^T)^{-1} = (A^{-1})^T$.
+\end{corollary}
+
+\begin{corollary}
+  If $B \in M_m(\mathbb{R})$ and $C \in M_n(\mathbb{R})$ are non-degenerate, 
+  $\forall A \in M_{m \times n}(\mathbb{R})$, it holds that
+  \[
+    \rank BAC = \rank A
+  \]
+\end{corollary}
+
+\begin{corollary}
+  If $A, B \in M_n(\mathbb{R})$, and $AB = E \vee BA = E$, then $B = A^{-1}$.
+\end{corollary}
+
+\begin{corollary}
+  If $A, B, \ldots, C, D \in M_n(\mathbb{R})$ are non-degenerate, then 
+  $AB \cdots CD$ is non-degenerate, and its inverse matrix is
+  \[
+    (AB \cdots CD)^{-1} = D^{-1} C^{-1} \cdots B^{-1} A^{-1}
+  \]
+\end{corollary}
+
+\subsection{Calculation of Powers of a Matrix}
+
+\begin{example}[Powers of a Scalar Matrix]
+  
+\end{example}
+
+\begin{example}
+  \[
+    A = 
+    \begin{pmatrix}
+      a & c \\
+      0 & b \\
+    \end{pmatrix}
+  \]
+\end{example}
+
+\begin{example}
+  \[
+    A = 
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 1 \\
+    \end{pmatrix}
+  \]
+\end{example}
+
 \section{Equivalence Class of Matrices}
+
+\begin{definition}[Elementary Matrix]
+  
+\end{definition}
+
+\begin{theorem}
+  $M_{m \times n}(\mathbb{R})$ has a partition of $\min(m, n) + 1$ equivalence 
+  classes. All matrices with its rank as $r$ including the representative 
+  element is in a equivalence class.
+\end{theorem}
+
+\begin{corollary}
+  Every non-degenerate matrix $A \in M_n(\mathbb{R})$ can be expressed as the 
+  product of elementary matrices.
+\end{corollary}
 
 \section{Calculation of Inverse Matrix}
 
