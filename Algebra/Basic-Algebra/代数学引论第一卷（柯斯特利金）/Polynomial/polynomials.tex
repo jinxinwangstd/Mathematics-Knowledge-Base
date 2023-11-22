@@ -11,6 +11,7 @@
 \usepackage{indentfirst}
 \usepackage{bm}
 \usepackage{tikz}
+\usepackage{hyperref} % For the functionality of creating hypertext links. It should be the last package to declare.
 \usetikzlibrary{shapes,arrows}
 \geometry{a4paper,scale=0.8}
 
@@ -60,7 +61,11 @@
     f(x) = \Sigma_{i=0}^n a_i x^i, g(x) = x - c, q(x) = \Sigma_{i=0}^{n-1} b_i x^i, r(x) = r
   \]
   \[
-    q(x)g(x) + r(x) = b_{n-1} x^n + (b_{n-2} - c b_{n-1}) x^{n-1} + (b_{n-3} - c b_{n-2}) x^{n-2} + \cdots + (b_0 - c b_1) x + r - c b_0 = \Sigma_{i=0}^n a_i x^i = f(x)
+    \begin{split}
+      q(x)g(x) + r(x) &= b_{n-1} x^n + (b_{n-2} - c b_{n-1}) x^{n-1} + (b_{n-3} - c b_{n-2}) x^{n-2} + \cdots + (b_0 - c b_1) x + r - c b_0 \\
+                      &= \Sigma_{i=0}^n a_i x^i \\
+                      &= f(x)
+    \end{split}
   \]
   则系数间有如下关系:
   \[
@@ -76,7 +81,7 @@
   \]
   根据上述关系，我们可以快速得到带余除法的结果。
 
-  注意上述关系只在除式$g(x) = x + c$即一次项系数为$1$才成立，对于一次项系数不是$1$的除式，则有$g(x) = c_1 x + c_0 = c_1 (x + \frac{c_0}{c_1}) = c_1 g'(x)$.
+  注意上述关系只在除式$g(x) = x - c$即一次项系数为$1$才成立，对于一次项系数不是$1$的除式，则有$g(x) = c_1 x + c_0 = c_1 (x + \frac{c_0}{c_1}) = c_1 g'(x)$.
 \end{remark}
 
 
@@ -108,7 +113,7 @@ Properties of Divisors:
 \begin{remark}
   Since $\forall f(x) \in P\lbrack x \rbrack$ is a divisor of the zero 
   polynomial, in other words $0 = 0 \cdot f(x)$, the greatest common divisor of 
-  $f(x)$ and $0$ is $0$. Especially, the greatest common divisor of $0$ and $0$ 
+  $f(x)$ and $0$ is $f(x)$. Especially, the greatest common divisor of $0$ and $0$ 
   is $0$, which is in accordance with the definition of GCD.
 \end{remark}
 
@@ -120,6 +125,19 @@ Properties of Divisors:
 \begin{proof}
   
 \end{proof}
+\begin{remark}
+  The pair of polynomials $(f(x), g(x))$ has the same common divisors as the 
+  pair of polynomials $(f(x) - q(x)g(x), g(x)), \forall q(x) \in P\lbrack x 
+  \rbrack$. Hence, the two pairs has the same property decided by common 
+  divisors, such as GCD and coprime.
+
+  Application:
+  \begin{itemize}
+    \item Euclid's Algorithm
+    \item If $(f(x), g(x)) = 1$, then $(f(x), f(x) + g(x)) = (g(x), f(x) + g(x)) 
+    = 1$.
+  \end{itemize}
+\end{remark}
 
 \begin{theorem}[Theorem of Polynomial Greatest Common Divisor]
   $\forall f(x) \in P\lbrack x \rbrack$ and $\forall g(x) \in P\lbrack x \rbrack$, 
@@ -138,6 +156,13 @@ Properties of Divisors:
 \begin{remark}[Euclid's Algorithm]
   
 \end{remark}
+
+\begin{proposition}
+  If $d(x)$ is a common divisor of $f(x)$ and $g(x)$, then
+  \[
+    ((f(x), g(x)) = d(x)) \Leftrightarrow (\exists u(x), v(x) \in P\lbrack x \rbrack (d(x) = u(x)f(x) + v(x)g(x)))
+  \]
+\end{proposition}
 
 \begin{definition}[Coprime]
   (f(x), g(x)) = 1
@@ -166,8 +191,15 @@ Properties of Divisors:
 \begin{definition}[不可约多项式]
   
 \end{definition}
+\begin{example}
+  $x^2 + 1$在实数域上是不可约多项式。
+\end{example}
 \begin{remark}
-  由定义可知，$p(x) \in P\lbrack x \rbrack$ $\Leftrightarrow$ $p(x)$的因式只有$c \neq 0$和
+  Irreducible是一个相对于数域的概念，因为一个多项式在一个数域上不可约，但在更大的数域上可能变为可约多项式。
+  因此我们在讨论不可约多项式时必须指明数域。
+\end{remark}
+\begin{remark}
+  由定义可知，$(p(x) \in P\lbrack x \rbrack \thickspace \textnormal{is irreducible})$ $\Leftrightarrow$ $p(x)$的因式只有$c \neq 0$和
   $c p(x) (c \neq 0)$. 因此，$\forall f(x) \in P\lbrack x \rbrack$, $(p(x), f(x)) = 1$ or 
   $(p(x), f(x)) = p(x)$. In other words, either $p(x)$ and $f(x)$ are coprime, or $p(x)$ 
   is a divisor of $f(x)$.
@@ -209,9 +241,16 @@ Properties of Divisors:
 \end{remark}
 
 \begin{corollary}
-  If irreducible polynomial $p(x)$ 是$f(x)$的$k$重因式，则$p(x)$是$f^{(1)}(x), f^{(2)}(x), \ldots, 
+  A irreducible polynomial $p(x)$ 是$f(x)$的$k$重因式 $\Leftrightarrow$ $p(x)$是$f(x), f^{(1)}(x), f^{(2)}(x), \ldots, \\ 
   f^{(k-1)}(x)$的因式，但不是$f^{(k)}(x)$的因式。
 \end{corollary}
+\begin{proof}
+  $\Rightarrow$: Use mathematical induction on $k$
+
+  $\Leftarrow$: Use proof by contradiction. 如果$p(x)$是$f(x)$的$n (n > k)$重因式，
+  则$p(x)$是$f^{(k)}$的因式，这与条件相矛盾。如果$p(x)$是$f(x)$的$n (n < k)$重因式，
+  则$p(x)$不是$f^{(k-1)}(x)$的因式，这与条件相矛盾。
+\end{proof}
 
 \begin{corollary}
   $p(x)$是$f(x)$的重因式 $\Leftrightarrow$ $p(x)$是$f(x)$和$f'(x)$的公因式
@@ -281,9 +320,172 @@ Properties of Divisors:
 \begin{theorem}[实系数多项式因式分解定理]
   每一个次数大于等于1的实系数多项式在实数域上都可以唯一地分解为一次因式和二次不可约因式的乘积。
 \end{theorem}
+\begin{proof}
+  
+\end{proof}
+
 \section{有理系数多项式}
+\begin{definition}[本原多项式]
+  如果一个非零整系数多项式$f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$的系数
+  $a_n, a_{n-1}, \ldots, a_1, a_0$是互素的，则我们称这样的多项式为primitive polynomial.
+\end{definition}
+\begin{remark}
+  任何一个非零有理系数多项式都可以化为一个本原多项式。
+\end{remark}
+
+\begin{theorem}[Gauss's Lemma]
+  The product of two primitive polynomials is still a primitive polynomial.
+\end{theorem}
+\begin{proof}
+  
+\end{proof}
+
+\begin{theorem}
+  如果一个非零的整系数多项式能够分解为两个次数较低的有理系数多项式的乘积，
+  那么它一定能分解成两个次数较低的整系数多项式的乘积。
+\end{theorem}
+
+\begin{corollary}
+  Suppose $f(x), g(x) \in \mathbb{Z}\lbrack x \rbrack$, and $g(x)$ is a 
+  primitive polynomial. If $f(x) = g(x)h(x)$, in which $h(x) \in \mathbb{Q}
+  \lbrack x \rbrack$, then we can conclude that $h(x) \in \mathbb{Z}\lbrack x 
+  \rbrack$.
+\end{corollary}
+\begin{proof}
+  
+\end{proof}
+
+\begin{theorem}
+  Suppose $f(x) \in \mathbb{Z}\lbrack x \rbrack$ where $f(x) = a_n x^n + 
+  a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$. If $\frac{r}{s}$ is a rational root 
+  of $f(x)$ and $r, s$ are coprime, then $s \mid a_n$ $r \mid a_0$. Especially if 
+  $a_n = 1$, then all rational roots of $f(x)$ are integers, and are divisors of $a_0$.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\begin{theorem}[Eisenstein's Criterion]
+  Suppose $f(x) \in \mathbb{Z}\lbrack x \rbrack$ where $f(x) = a_n x^n + 
+  a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$. If there is a prime number $p$ such that
+  \begin{itemize}
+    \item $p \nmid a_n$
+    \item $p \mid a_{n-1}, a_{n-2}, \ldots, a_0$
+    \item $p^2 \nmid a_0$
+  \end{itemize}
+  then $f(x)$ is irreducible in $\mathbb{Q}$.
+\end{theorem}
+
+\begin{remark}
+  使用Eisenstein's Criterion有一个技巧：换元法。如果经过变量替换后的整系数多项式在有理数域上不可约，
+  则原整系数多项式在有理数域上不可约。
+\end{remark}
+\begin{proof}
+  
+\end{proof}
+
+\begin{example}
+  Determine whether the polynomial $f(x) = x^p + px + 1$ where $p$ is an odd 
+  prime number is reducible in $\mathbb{Q}$.
+
+  Let $x = g(y) = y - 1$ then 
+  \[
+    \begin{split}
+      f(x) &= f(g(y)) \\
+           &= (y - 1)^p + p(y - 1) + 1 \\
+           &= \Sigma_{k=0}^p 
+              \begin{pmatrix}
+                p \\
+                k
+              \end{pmatrix} y^{p-k}(-1)^k + py - p + 1
+    \end{split}
+  \]
+
+  Since $p$ is an odd number, 
+  \[
+    \Sigma_{k=0}^p 
+    \begin{pmatrix}
+      p \\
+      k
+    \end{pmatrix} y^{p-k}(-1)^k = y^p + \Sigma_{k=1}^{p-2} 
+    \begin{pmatrix}
+      p \\
+      k
+    \end{pmatrix} y^{p-k}(-1)^k + py - 1
+  \]
+  Hence
+  \[
+    \begin{split}
+      f(x) &= f(g(y)) \\
+           &= y^p + \Sigma_{k=1}^{p-2} 
+              \begin{pmatrix}
+                p \\
+                k
+              \end{pmatrix} y^{p-k}(-1)^k + 2py - p
+    \end{split}
+  \]
+\end{example}
+
+\begin{example}
+  $\forall n \in \mathbb{N}^+$, the polynomial $x^n + 2$ is irreducible in 
+  $\mathbb{Q}$, since with a prime number $p = 2$, $p \nmid a_n = 1$, $p \mid 
+  a_{n-1} = 0, a_{n-2} = 0, \ldots, a_1 = 0, a_0 = 2$, and $p^2 \nmid a_0 = 2$. 
+  Therefore, in $\mathbb{Q}$ there is at least one irreducible polynomial with 
+  any degree.
+\end{example}
 
 \section{多元多项式}
 
+\begin{definition}[单项式、同类项、n元多项式、单项式和多项式的次数]
+  
+\end{definition}
+\begin{remark}[字典排序法]
+  
+\end{remark}
+
+\begin{theorem}
+  If $f(x_1, x_2, \cdots, x_n) \neq 0$, $g(x_1, x_2, \cdots, x_n) \neq 0$, the 
+  first term of \\ $f(x_1, x_2, \cdots, x_n)g(x_1, x_2, \cdots, x_n)$ is the 
+  product of the first term of $f(x_1, x_2, \cdots, x_n)$ and the first term of 
+  $g(x_1, x_2, \cdots, x_n)$.
+\end{theorem}
+
+\begin{corollary}
+  If $f_i(x_1, x_2, \cdots, x_n) \neq 0, i = 1, 2, \ldots, m$, then the first 
+  term of $f_1f_2 \cdots f_m$ is the product of the first term of every 
+  polynomial $f_i (i = 1, 2, \ldots, m)$.
+\end{corollary}
+
+\begin{corollary}
+  If $f(x_1, x_2, \cdots, x_n) \neq 0$, $g(x_1, x_2, \cdots, x_n) \neq 0$, then $f(x_1, x_2, \cdots, x_n)g(x_1, x_2, \cdots, x_n) \neq 0$.
+\end{corollary}
+\begin{remark}
+  这个推论指出了多元多项式环中没有非0零因子。
+\end{remark}
+
 \section{对称多项式}
+
+\begin{definition}[Symmetric Polynomials]
+  
+\end{definition}
+
+\begin{definition}[Elementary Symmetric Polynomials]
+  n元多项式环中有一类特殊的对称多项式
+  \begin{equation}
+    \begin{cases}
+      \sigma_1 = x_1 + x_2 + \cdots + x_n \\
+      \sigma_2 = x_1x_2 + x_1x_3 + \cdots + x_1x_n + x_2x_3 + x_2x_4 + \cdots + x_{n-1}x_n \\
+      \sigma_3 = x_1x_2x_3 + x_1x_2x_4 + \cdots + x_1x_2x_n + x_1x_3x_4 + \cdots + x_1x_{n-1}x_n + x_2x_3x_4 + \cdots + x_{n-2}x_{n-1}x_n
+      \cdots \\
+      \sigma_n = x_1x_2 \cdots x_{n-1}x_n
+    \end{cases}
+  \end{equation}
+\end{definition}
+
+\begin{theorem}
+  对于任意一个n元对称多项式$f(x_1, x_2, \cdots, x_n)$，都存在一个n元多项式 \\ $\phi(x_1, x_2, \cdots, x_n)$，使得
+  \[
+    f(x_1, x_2, \cdots, x_n) = \phi(\sigma_1, \sigma_2, \cdots, \sigma_n)
+  \]
+\end{theorem}
+
 \end{document}
