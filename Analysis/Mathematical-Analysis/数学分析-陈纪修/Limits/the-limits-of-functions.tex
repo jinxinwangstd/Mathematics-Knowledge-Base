@@ -22,7 +22,6 @@
 \newtheorem{remark}{Remark}
 \newtheorem{example}{Example}
 
-\DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\sgn}{sgn}
 
 \title{Notes of "The Limit of A Function"}
@@ -93,12 +92,18 @@
 
 \subsection{General Properties}
 
-\begin{definition}[局部常值函数]
+\begin{definition}[最终常数函数]
   
 \end{definition}
 
-\begin{definition}[有界函数/局部有界函数，上有界函数/局部上有界函数，下有界函数/局部下有界函数]
-  
+\begin{definition}[有界函数/最终有界函数，上有界函数/最终上有界函数，下有界函数/最终下有界函数]
+  A function $f: E \to \mathbb{R}$ is bounded, bounded above, or bounded below 
+  respectively if there is a number $C \in \mathbb{R}$ such that $|f(x)| < C$, 
+  $f(x) < C$, or $C < f(x)$ for all $x \in E$.
+
+  If one of these three relations holds only in some deleted neighborhood 
+  $\dot{U}_E(a)$, the function is said to be ultimately bounded, ultimately 
+  bounded above, or ultimatedly bounded below as $E \owns x \to a$ respectively.
 \end{definition}
 
 \begin{theorem}
@@ -113,29 +118,56 @@
   
 \end{proof}
 
-\subsection{Properties Involving Arithmetic}
+\subsection{Properties Involving Arithmetic Operations}
 
 \begin{definition}[两个函数的和、积与商]
   
 \end{definition}
 
 \begin{theorem}[四则运算中的函数极限]
-  
+  Let $f:E \to \mathbb{R}$ and $g:E \to \mathbb{R}$ be two functions with a 
+  common domain of definition. If $\lim_{E \owns x \to a} f(x) = A$ and 
+  $\lim_{E \owns x \to a} g(x) = B$, then
+  \begin{itemize}
+    \item $\lim_{E \owns x \to a} f(x) + g(x) = A + B$
+    \item $\lim_{E \owns x \to a} f(x) g(x) = AB$
+    \item $\lim_{E \owns x \to a} \frac{f(x)}{g(x)} = \frac{A}{B}$, if 
+    $B \neq 0$ and $g(x) \neq 0$ for $x \in E$.
+  \end{itemize}
 \end{theorem}
 
-\begin{definition}[无穷小函数]
-  
+\begin{definition}[Infinitesimal]
+  A function $f: E \to \mathbb{R}$ is said to be infinitesimal as $E \owns x \to 
+  a$ if $\lim_{E \owns x \to a} f(x) = 0$
 \end{definition}
 
 \begin{proposition}[无穷小函数的四则运算性质]
-  
+  Let $\alpha: E \to \mathbb{R}$ is an infinitesimal as $E \owns x \to a$, then
+  \begin{itemize}
+    \item If $\beta: E \to \mathbb{R}$ is also an infinitesimal as $E \owns x 
+    \to a$, then their sum $\alpha + \beta$ is also an infinitesimal as $E \owns 
+    x \to a$.
+    \item If $\beta: E \to \mathbb{R}$ is also an infinitesimal as $E \owns x 
+    \to a$, then their product $\alpha \beta$ is also an infinitesimal as $E 
+    \owns x \to a$.
+    \item If $\beta: E \to \mathbb{R}$ is ultimately bounded as $E \owns x \to a$,
+    then their product $\alpha \beta$ is also an infinitesimal as $E \owns x \to 
+    a$. 
+  \end{itemize}
 \end{proposition}
-
+\begin{proof}
+  
+\end{proof}
+\begin{remark}
+  \begin{equation}
+    (\lim_{E \owns x \to a} f(x) = A) \Leftrightarrow (\lim_{E \owns x \to a} (f(x) - A) = 0)
+  \end{equation}
+\end{remark}
 \subsection{Properties Involving Inequalities}
 
 \begin{theorem}
   \begin{itemize}
-    \item (局部保序性)
+    \item (局部保序性) If the functions $f: E \to \mathbb{R}$ and $g: E \to \mathbb{R}$ are such that 
     \item (夹逼性)
   \end{itemize}
 \end{theorem}
@@ -145,8 +177,17 @@
 \end{corollary}
 
 \begin{corollary}[极限值的不等关系]
-  
+  Suppose $\lim_{E \owns x \to a} f(x) = A$ and $\lim_{E \owns x \to a} g(x) = 
+  B$. Let $\dot{U}_E(a)$ be a deleted neighborhood of $a \in E$.
+  \begin{description}
+    \item[(a)] If $f(x) > g(x)$ for all $x \in \dot{U}_E(a)$, then $A \geq B$.
+    \item[(b)] If $f(x) \geq g(x)$ for all $x \in \dot{U}_E(a)$, then $A \geq B$.
+    \item[(c)] If $f(x) > B$ for all $x \in \dot{U}_E(a)$, then $A \geq B$.
+    \item[(d)] If $f(x) \geq B$ for all $x \in \dot{U}_E(a)$, then $A \geq B$.
+  \end{description}
 \end{corollary}
+
+\subsection{Two Important Examples}
 
 \begin{example}[研究$\frac{\sin x}{x}$在$x=0$处的极限]
   \begin{equation}
@@ -175,14 +216,101 @@
 Some useful bases in analysis
 \[
   \begin{matrix}
-    x \to a & \textnormal{Deleted neighborhoods of } a \in \mathbb{R} & \dot{U}(a):= \lbrace x \in \mathbb{R} \mid a - \delta_1 < x < a + \delta_2 \wedge x \neq a, \delta_1 > 0, \delta_2 > 0\rbrace \\
-    x \to \infty & \textnormal{Neighborhoods of infinity} & U(\infty) := \lbrace x \in \mathbb{R} \mid |x| > \delta, \delta \in \mathbb{R} \rbrace \\
-    E \owns x \to a & \textnormal{Deleted neighborhoods of } a \in E \thickspace \textnormal{($a$ is a limit point of $E$)}) & \dot{U}_E(a) := E \cap \dot{U}(a) \\
-    E \owns x \to \infty & \textnormal{Neighborhoods of infinity} \in E \thickspace \textnormal{($E$ is not bounded)} & U_E(\infty) := E \cap U(\infty) \\
+    x \to a & \dot{U}(a):= \lbrace x \in \mathbb{R} \mid a - \delta_1 < x < a + \delta_2 \wedge x \neq a, \delta_1 > 0, \delta_2 > 0\rbrace \\
+    x \to a+0 & E_a^+ := \lbrace x \in \mathbb{R} \mid a < x \rbrace, \dot{U}_{E_a^+}(a) := E_a^+ \cap \dot{U}(a) = \lbrace x \in \mathbb{R} \mid a < x < a + \delta, \delta > 0 \rbrace \\
+    x \to a-0 & E_a^+ := \lbrace x \in \mathbb{R} \mid x < a \rbrace, \dot{U}_{E_a^-}(a) := E_a^- \cap \dot{U}(a) = \lbrace x \in \mathbb{R} \mid a - \delta < x < a, \delta > 0 \rbrace \\
+    x \to \infty & U(\infty) := \lbrace x \in \mathbb{R} \mid |x| > \delta, \delta \in \mathbb{R} \rbrace \\
+    x \to +\infty & E_{\infty}^+ := \lbrace x \in \mathbb{R} \mid c < x, c \in \mathbb{R} \rbrace, U_{E_{\infty}^+}(\infty) := E_{\infty}^+ \cap U(\infty) = \lbrace x \in \mathbb{R} \mid c < x, c \in \mathbb{R} \rbrace \\
+    x \to -\infty & E_{\infty}^- := \lbrace x \in \mathbb{R} \mid x < c, c \in \mathbb{R} \rbrace, U_{E_{\infty}^-}(\infty) := E_{\infty}^- \cap U(\infty) = \lbrace x \in \mathbb{R} \mid x < c, c \in \mathbb{R} \rbrace \\
+    E \owns x \to a & \dot{U}_E(a) := E \cap \dot{U}(a) \\
+    E \owns x \to a+0 & \dot{U}_E(a+0) := E \cap E_a^+ \cap \dot{U}(a) \\
+    E \owns x \to a-0 & \dot{U}_E(a-0) := E \cap E_a^- \cap \dot{U}(a) \\
+    E \owns x \to \infty & U_E(\infty) := E \cap U(\infty) \\
+    E \owns x \to +\infty & U_E(+\infty) := E \cap E_{\infty}^+ \cap U(\infty) \\
+    E \owns x \to -\infty & U_E(-\infty) := E \cap E_{\infty}^- \cap U(\infty)\\
   \end{matrix}
 \]
 
 \subsection{Limit over a Base}
+
+\begin{definition}[The Limit of a Function over a Base]
+  \begin{equation}
+    (\lim_{\mathcal{B}} f(x) = A) := (\forall U(A) \exists B \in \mathcal{B} (f(B) \subset U(A)))
+  \end{equation}
+\end{definition}
+
+\[
+  \lim_{x \to a} f(x) = A := (\forall \epsilon > 0, \exists \delta > 0, \forall x \in (a - \delta, a + \delta): (|f(x) - A| < \epsilon))
+\]
+\[
+  \lim_{x \to a+0} f(x) = A 
+\]
+\[
+  \lim_{x \to a-0} f(x) = A  
+\]
+\[
+  \lim_{x \to \infty} f(x) = A  
+\]
+\[
+  \lim_{x \to +\infty} f(x) = A  
+\]
+\[
+  \lim_{x \to -\infty} f(x) = A  
+\]
+\[
+  \lim_{x \to a} f(x) = \infty
+\]
+\[
+  \lim_{x \to a+0} f(x) = \infty
+\]
+\[
+  \lim_{x \to a-0} f(x) = \infty
+\]
+\[
+  \lim_{x \to \infty} f(x) = \infty
+\]
+\[
+  \lim_{x \to +\infty} f(x) = \infty
+\]
+\[
+  \lim_{x \to -\infty} f(x) = \infty
+\]
+\[
+  \lim_{x \to a} f(x) = +\infty
+\]
+\[
+  \lim_{x \to a+0} f(x) = +\infty
+\]
+\[
+  \lim_{x \to a-0} f(x) = +\infty
+\]
+\[
+  \lim_{x \to \infty} f(x) = +\infty
+\]
+\[
+  \lim_{x \to +\infty} f(x) = +\infty
+\]
+\[
+  \lim_{x \to -\infty} f(x) = +\infty
+\]
+\[
+  \lim_{x \to a} f(x) = -\infty
+\]
+\[
+  \lim_{x \to a+0} f(x) = -\infty
+\]
+\[
+  \lim_{x \to a-0} f(x) = -\infty
+\]
+\[
+  \lim_{x \to \infty} f(x) = -\infty
+\]
+\[
+  \lim_{x \to +\infty} f(x) = -\infty
+\]
+\[
+  \lim_{x \to -\infty} f(x) = -\infty
+\]
 
 \section{The Existence of the Limit of a Function}
 
