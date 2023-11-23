@@ -1,0 +1,198 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\title{Notes of "Differentiable Functions"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Statement of the Problem and Introductory Considerations}
+
+Solving the Kepler problem of two bodies, which is to describe the motion of a 
+planet relative to a star. With an appropriate coordinate system, we use two 
+functions $x(t)$ and $y(t)$ to describe the motion of the planet.
+
+\begin{equation} \label{eq:1}
+  \vec{F} = m \vec{a}
+\end{equation}
+
+\begin{equation}
+  \vec{F} = G\frac{Mm}{|\vec{r}|^3}\vec{r}
+\end{equation}
+
+Now our task is to define and compute the instaneous velocity of a motion 
+governed by the law (\ref{eq:1}).
+
+By the law of inertia, if no force is acted on a body, it moves in uniform 
+motion. Hence if at time $t$ the external action on a body ceases, it will 
+continue moving in a straight line with a certain velocity. Since forces are to 
+change velocity instead of maintaining velocity, it is natural to consider the 
+hypothetical velocity as the instaneous velocity at time $t$.
+
+If the absolute magnitude of the rate of change of a quantity $f(t)$ is bounded 
+over an time interval $[0, t]$, then as the time interval $\Delta t$ becomes 
+smaller, the change of the quantity $\Delta f$ becomes smaller, which is 
+equivalent to say that $f(t)$ is continuous.
+
+Apparently the above analysis applies to the case of velocity where the rate of 
+change of velocity is acceleration, whose absolute magnitude is bounded since 
+the external force on a body is finite. Therefore, at all times $t$ close to 
+some time $t_0$ the velocity $\vec{v}(t)$ of the body $m$ must be close to the 
+value $\vec{v}(t_0)$ that we wish to determine.
+\begin{remark}
+  Notice that there seems to be a shift from a scalar $f(t)$ to a vector 
+  $\vec{v}(t)$, and a question may arise that whether the previous analysis 
+  about the bounded rate of change and continuity of a scalar function applies 
+  to a vector function. Consider the nature of change, it must be true that when 
+  a change of a quantity becomes smaller, the changed quantity is closer to the 
+  original quantity, no matter whether the quantity is a scalar or a vector. 
+  Therefore, the analysis about the bounded rate of change and continuity 
+  applies to both cases.
+\end{remark}
+
+\section{Functions Differentiable at a Point}
+
+\begin{definition}
+  A function $f:E \to \mathbb{R}$ is differentiable at a point $a \in E$ that is 
+  a limit point of $E$ if there exists a linear function $A(x - a)$ such that 
+  $f(x) - f(a)$ can be represented as
+  \begin{equation}
+    f(x) - f(a) = A (x - a) + o(x - a) \thickspace \textnormal{as} \thickspace x \to a, x \in E
+  \end{equation}
+\end{definition}
+\begin{corollary}
+  If a function $f:E \to \mathbb{R}$ is differentiable at a point $a \in E$ that 
+  is a limit point of $E$, then it is also continuous at the point $a \in E$.
+\end{corollary}
+\begin{remark}
+  The conversion of the above corollary is not true. An counterexample is that 
+  $f(x) = x^{\frac{1}{3}}$ is continuous at $x = 0$, but it is not 
+  differentiable at $x = 0$.
+\end{remark}
+
+\begin{definition}
+  The linear function $A (x - a)$ in the above definition is called the 
+  differential of the function $f$ at $a$.
+\end{definition}
+
+\begin{definition}
+  The number
+  \begin{equation}
+    f'(a) = \lim_{E \owns x \to a} \frac{f(x) - f(a)}{x - a}
+  \end{equation}
+  is called the derivative of the function $f$ at $a$.
+\end{definition}
+
+\begin{definition}
+  A function $f:E \to \mathbb{R}$ is differentiable at a point $a \in E$ that is 
+  a limit point of $E$ if
+  \begin{equation}
+    f(x + h) - f(h) = A(x)h + \alpha(x;h)
+  \end{equation}
+  where $h \mapsto A(x)h$ is a linear function in $h$ and $\alpha(x;h) = o(h)$ 
+  as $h \to 0, x + h \in E$.
+\end{definition}
+\begin{remark}
+  The difference between this definition of differentiability at a point and the 
+  previous one is that this one takes into account that the quantity $A(x)$ and 
+  $\alpha(x;h)$ may change in terms of differentiability at different points $x$, 
+  so we write them as functions of $x$.
+\end{remark}
+
+\begin{definition}
+  The function $h \mapsto A(x)h$ in the definition of differentiability at a 
+  point, which is linear in $h$, is called the differential of the function $f:E 
+  \to \mathbb{R}$ at the point $x \in E$ and is denoted $df(x)$ or $Df(x)$.
+\end{definition}
+\begin{remark}[The Principal Linear Part of the Increment of the Function]
+  
+\end{remark}
+\begin{remark}[The Leibniz Notation of the Derivative]
+  \begin{equation}
+    df(x)(h) = f'(x)h
+  \end{equation}
+  \[
+    dx(h) = 1 \cdot h = h
+  \]
+  \begin{equation}
+    df(x)(h) = f'(x)dx(h)
+  \end{equation}
+  \begin{equation}
+    df(x) = f'(x)dx
+  \end{equation}
+  \begin{equation}
+    f'(x) = \frac{df(x)(h)}{dx(h)}
+  \end{equation}
+\end{remark}
+
+\section{The Tangent Line; Geometric Meaning of the Derivative and Differential}
+
+\begin{equation}
+  f(x) = c_0 + c_1(x - x_0) + o(x - x_0) \thickspace \textnormal{as} \thickspace x \to x_0, x \in E
+\end{equation}
+
+\begin{proposition}
+  A function $f:E \to \mathbb{R}$ that is continuous at a point $x_0 \in E$ that 
+  is a limit point of $E \subset \mathbb{R}$ admits a linear approximation as 
+  \begin{equation}
+    f(x) = c_0 + c_1(x - x_0) + o(x - x_0) \thickspace \textnormal{as} \thickspace x \to x_0, x \in E
+  \end{equation} 
+  if and only if it is differentiable at the point.
+\end{proposition}
+\begin{remark}
+  (TODO) What is the difference between this proposition and the definition of the 
+  differentiability at a point?
+\end{remark}
+
+\begin{definition}[Analytic Definition of a Tangent Line]
+  If a function $f:E \to \mathbb{R}$ is defined on a set $E \subset \mathbb{R}$ 
+  and differentiable at a point $x_0 \in E$, the line defined by the equation
+  \begin{equation}
+    y - f(x_0) = f'(x_0)(x - x_0)
+  \end{equation}
+  is called the tangent to the graph of this function at the point $(x_0, f(x_0))$.
+\end{definition}
+
+\begin{definition}[Nth Order Contact at a Point between Two Mappings]
+  If the mappings $f:E \to \mathbb{R}$ and $g:E \to \mathbb{R}$ are continuous 
+  at a point $x_0 \in E$ that is a limit point of $E$ and $f(x) - g(x) = 
+  o((x - x_0)^n)$ as $x \to x_0, x \in E$, we say that $f$ and $g$ have $n$th 
+  order contact at $x_0$ (more precisely, contact of order at least $n$).
+
+  For $n = 1$, we say that the mappings $f$ and $g$ are tangent to each other 
+  at $x_0$.
+\end{definition}
+\begin{example}[Polynomial Approximation]
+  
+\end{example}
+
+\section{The Role of the Coordinate System}
+
+\begin{remark}[Geometric Definition of a Tangent Line]
+  
+\end{remark}
+\end{document}
