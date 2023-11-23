@@ -1,0 +1,106 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{hyperref} % For the functionality of creating hypertext links. It should be the last package to declare.
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\DeclareMathOperator{\rank}{rank}
+
+\title{Notes of "More Properties of Determinants"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{行列式按一行或一列的元素展开}
+
+\begin{example}
+\[
+  \begin{vmatrix}
+    a & b & b & \cdots & b \\
+    b & a & b & \cdots & b \\
+    b & b & a & \cdots & b \\
+    \vdots & \vdots & \vdots & & \vdots \\
+    b & b & b & \cdots & a \\
+  \end{vmatrix} = (a + (n - 1)b)(a - b)^{n-1}
+\]
+\end{example}
+
+\begin{example}[奇数阶反对称（斜对称）行列式]
+  
+\end{example}
+
+\begin{example}[Verdemond Determinant]
+\[
+  \begin{vmatrix}
+    1 & 1 & 1 & \cdots & 1 \\
+    a_1 & a_2 & a_3 & \cdots & a_n \\
+    a_1^2 & a_2^2 & a_3^2 & \cdots & a_n^2 \\
+    \vdots & \vdots & \vdots & & \vdots \\
+    a_1^{n-1} & a_2^{n-1} & a_3^{n-1} & \cdots & a_n^{n-1} \\
+  \end{vmatrix}
+\]  
+\end{example}
+
+\begin{example}[三对角行列式]
+\[
+  A = 
+  \begin{vmatrix}
+    a & b & 0 & \cdots & 0 & 0 \\
+    c & a & b & \cdots & 0 & 0 \\
+    0 & c & a & \cdots & 0 & 0 \\
+    \vdots & \vdots & \vdots & & \vdots & \vdots \\
+    0 & 0 & 0 & \cdots & a & b \\
+    0 & 0 & 0 & \cdots & c & a \\
+  \end{vmatrix}
+\]
+
+If $a^2 - 4bc = 0$, then let $\alpha$ be the only solution of the equation 
+$x^2 - ax + bc = 0$, and thus $\det A = \frac{(n+1)\alpha^n}{2^n}$.
+
+If $a^2 - 4bc \neq 0$, then let $\alpha, \beta$ be the two solutions of the 
+equation $x^2 - ax + bc = 0$, and thus $\det A = 
+\frac{\alpha^{n+1} - \beta^{n+1}}{\alpha - \beta}$.
+\end{example}
+
+\begin{example}[循环行列式]
+\[
+  \begin{vmatrix}
+    a_0 & a_1 & a_2 & \cdots & a_{n-2} & a_{n-1} \\
+    a_{n-1} & a_0 & a_1 & \cdots & a_{n-3} & a_{n-2} \\
+    a_{n-2} & a_{n-1} & a_0 & \cdots & a_{n-4} & a_{n-3} \\
+    \vdots & \vdots & \vdots & & \vdots & \vdots \\
+    a_2 & a_3 & a_4 & \cdots & a_0 & a_1 \\
+    a_1 & a_2 & a_3 & \cdots & a_{n-1} & a_0 \\
+  \end{vmatrix} = f(1)f(\omega)f(\omega^2) \cdots f(\omega^{n-1})
+\]
+in which
+\[
+  f(x) = \Sigma_{i=0}^{n-1} a_i x^i, \omega = \exp(\frac{2\pi i}{n})
+\]
+\end{example}
+
+\section{特殊矩阵的行列式}
+
+\end{document}

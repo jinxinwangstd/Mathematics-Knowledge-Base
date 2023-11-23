@@ -1,0 +1,136 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{hyperref} % For the functionality of creating hypertext links. It should be the last package to declare.
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\DeclareMathOperator{\rank}{rank}
+
+\title{Notes of "Determinant: Construction and Basic Properties"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Geometric Background}
+
+\section{Combination-Analytic Method}
+
+\begin{definition}[Determinant]
+  The determinant of a matrix $A$ of order $n$ is a number decided by the matrix 
+  that is
+  \begin{equation}
+    \det A = \Sigma_{\sigma \in S_n} \epsilon_\sigma a_{1\sigma(1)} a_{2\sigma(2)} \cdots a_{n\sigma(n)}
+  \end{equation}
+\end{definition}
+\begin{remark}
+  For a matrix of order $n$, its determinant is a sum with $n!$ terms, since 
+  $S_n$ has $n!$ elements.
+\end{remark}
+
+\section{Basic Properties of Determinants}
+
+For the convenience of description, some conventions of notations:
+\begin{itemize}
+  \item The $i$-th row of a matrix $A$ is denoted by $A_{(i)}$.
+  \item The $j$-th column of a matrix $A$ is denoted by $A^{(j)}$.
+  \item A matrix of order $n$ can be represented as a column of row vectors: 
+  $A = \lbrack A_{(1)}, A_{(2)}, \ldots, A_{(n)} \rbrack$
+  \item A matrix of order $n$ can be represented as a row of column vectors: 
+  $A = (A^{(1)}, A^{(2)}, \ldots, A^{(n)})$
+\end{itemize}
+
+According to the definition of a determinant, $\det$ is a mapping from a square 
+matrix $A$ to a number $|A|$. Our mission is to study how the mapping changes 
+when we change rows or columns of a matrix.
+
+\begin{definition}[多重线性函数]
+  
+\end{definition}
+
+\begin{definition}[斜对称函数]
+  
+\end{definition}
+
+\begin{theorem}[Determinants of a Square Matrix and its Transpose]
+  \[
+    \det A = \det A^T
+  \]
+\end{theorem}
+\begin{proof}
+  Suppose $A = (a_{ij})_{n \times n}$ and $A^T = (a_{ij}')_{n \times n}$, then 
+  $a_{ij} = a_{ji}'$.
+  \[
+    \det A = \Sigma_{\sigma \in S_n} \epsilon_\sigma a_{1\sigma(1)} a_{2\sigma(2)} \cdots a_{n\sigma(n)}
+  \]
+  If we rearrange the order of factors in each term of $\det A$ by its column index, then
+  \[
+    \det A = \Sigma_{\sigma \in S_n} \epsilon_\sigma a_{\sigma^{-1}(1)1} a_{\sigma^{-1}(2)2} \cdots a_{\sigma^{-1}(n)n}
+  \]
+  Recall that $\epsilon_\sigma = \epsilon_{\sigma^{-1}}$. Besides, since $S_n 
+  \to S_n: \sigma \mapsto \sigma^{-1}$ is a bijection, 
+  \[
+    \lbrace \sigma \mid \sigma \in S_n \rbrace = \lbrace \sigma^{-1} \mid \sigma \in S_n \rbrace
+  \]
+  Therefore,
+  \[
+    \begin{split}
+      \det A &= \Sigma_{\sigma \in S_n} \epsilon_{\sigma^{-1}} a_{\sigma^{-1}(1)1} a_{\sigma^{-1}(2)2} \cdots a_{\sigma^{-1}(n)n} \\
+             &= \Sigma_{\sigma \in S_n} \epsilon_{\sigma^{-1}} a'_{1\sigma^{-1}(1)} a'_{2\sigma^{-1}(2)} \cdots a'_{n\sigma^{-1}(n)} \\
+             &= \Sigma_{\sigma^{-1} \in S_n} \epsilon_{\sigma^{-1}} a'_{1\sigma^{-1}(1)} a'_{2\sigma^{-1}(2)} \cdots a'_{n\sigma^{-1}(n)} \\
+             &= \det A^T
+    \end{split}
+  \]
+\end{proof}
+\begin{remark}
+  The above property of determinants shows a kind of symmetry between the rows 
+  and columns of a determinant. More specifically, if there is a property of 
+  determinant with regards of rows, it also holds for columns, and vice versa.
+\end{remark}
+\begin{remark}
+  The symmetry between rows and columns of a determinant is sometimes used to 
+  calculate the value of the determinant.
+\end{remark}
+
+\begin{theorem}[行列式的多重线性和反对称性]
+  The function defined on the set $M_n(\mathbb{R})$ $\det: A \mapsto \det A$ has 
+  the following properties:
+  \begin{description}
+    \item[D1] $\det$ is skew-symmetric with regards of the rows of a square 
+    matrix.
+    \item[D2] $\det$ is multilinear with regards of the rows of a square matrix.
+    \item[D3] $\det E = 1$
+  \end{description}
+\end{theorem}
+\begin{proof}
+  
+\end{proof}
+
+The function $\det: A \mapsto \det A$ has some more properties that can be 
+derived from the above theorem, but we want to show that they holds for any 
+function $D: M_n(\mathbb{R}) \to \mathbb{R}$ that is skew-symmetric and 
+multilinear with regards of rows of a square matrix (in other words, satisfying 
+the above property \textbf{D1} and \textbf{D2}).
+
+\end{document}
