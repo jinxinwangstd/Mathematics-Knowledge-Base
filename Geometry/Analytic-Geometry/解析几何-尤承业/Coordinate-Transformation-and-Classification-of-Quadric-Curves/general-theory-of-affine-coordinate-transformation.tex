@@ -1,0 +1,222 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\DeclareMathOperator{\rank}{rank}
+
+\title{Notes of "General Theory of Affine Coordinate Transformation"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Transformation Matrix and Transformation Formulas of Vectors and Points in Two Coordinate Systems}
+
+\subsection{Transformation Formula of Points in Two Coordinate Systems}
+
+Given the coordinate $(x', y', z')$ in $I'$ of a point $M$, how to find its 
+corresponding coordinate $(x, y, z)$ in $I$?
+\begin{itemize}
+  \item $M (x', y', z')$ in $I'$ $\Leftrightarrow$ $O'M (x', y', z')$ in $I'$
+  \item $O'M$ in $I$ has the coordinate $C [x', y', z']$
+  \item Suppose $OO'$ in $I$, in other words, the coordinate of the point $O'$ in $I$, is $d_1, d_2, d_3$
+  \item $OM = OO' + O'M$ has the coordinate $[x, y, z] = C [x', y', z'] + [d_1, d_2, d_3]$
+  \item $OM(x, y, z)$ in $I$ $\Leftrightarrow$ $M (x, y, z)$ in $I$
+\end{itemize}
+
+\begin{equation}
+  \begin{cases}
+    x = c_{11} x' + c_{12} y' + c_{13} z' + d_1 \\
+    y = c_{21} x' + c_{22} y' + c_{23} z' + d_2 \\
+    z = c_{31} x' + c_{32} y' + c_{33} z' + d_3 \\
+  \end{cases}
+\end{equation}
+
+\section{Properties of Transformation Matrices}
+
+\begin{proposition}
+  All transformation matrix between two affine coordinate systems are inversible 
+  matrices.
+\end{proposition}
+
+\begin{proposition}
+  If the transformation matrix from $I$ to $I'$ is $C_1$, and the transformation 
+  matrix from $I'$ to $I''$ is $C_2$, then the transformation matrix from $I$ to 
+  $I''$ is $C_1C_2$.
+\end{proposition}
+
+\begin{corollary}
+  If the transformation matrix from $I$ to $I'$ is $C$, then the transformation 
+  matrix from $I'$ to $I$ is $C^{-1}$.
+\end{corollary}
+
+\begin{proposition}
+  Suppose $C$ is the transformation matrix from $I$ to $I'$. $I$ and $I'$ has 
+  the same orientation if and only if $|C| > 0$. $I$ and $I'$ has the opposite 
+  orientation if and only if $|C| < 0$
+\end{proposition}
+\begin{proof}
+  \[
+    \begin{pmatrix}
+      \vec{e'}_1 \\
+      \vec{e'}_2 \\
+      \vec{e'}_3 \\
+    \end{pmatrix} = C^T 
+    \begin{pmatrix}
+      \vec{e}_1 \\
+      \vec{e}_2 \\
+      \vec{e}_3 \\
+    \end{pmatrix}
+  \]
+  \[
+    \begin{vmatrix}
+      \vec{e'}_1 \\
+      \vec{e'}_2 \\
+      \vec{e'}_3 \\
+    \end{vmatrix} = |C^T|
+    \begin{vmatrix}
+      \vec{e}_1 \\
+      \vec{e}_2 \\
+      \vec{e}_3 \\
+    \end{vmatrix}
+  \]
+  \[
+    (\vec{e'}_1, \vec{e'}_2, \vec{e'}_3) = |C| (\vec{e}_1, \vec{e}_2, \vec{e}_3)
+  \]
+\end{proof}
+
+\section{Transformation between Cartesian Coordinate Systems}
+
+$I \lbrack O; e_1, e_2, e_3 \rbrack$ $I' \lbrack O'; e_1', e_2', e_3' \rbrack$. The transformation matrix from $I$ to $I'$ is
+\[
+  C = 
+  \begin{pmatrix}
+    c_{11} & c_{12} & c_{13} \\
+    c_{21} & c_{22} & c_{23} \\
+    c_{31} & c_{32} & c_{33} \\
+  \end{pmatrix}
+\]
+which is equivalent to
+\[
+  \begin{cases}
+    \vec{e'}_1 = c_{11} \vec{e}_1 + c_{21} \vec{e}_2 + c_{31} \vec{e}_3 \\
+    \vec{e'}_2 = c_{12} e_1 + c_{22} e_2 + c_{32} e_3 \\
+    \vec{e'}_3 = c_{13} e_1 + c_{23} e_2 + c_{33} e_3 \\
+  \end{cases}
+\]
+\[
+  \vec{e'}_i \cdot \vec{e'}_j = c_{1i} c_{1j} + c_{2i} c_{2j} + c_{3i} c_{3j}
+\]
+
+Since $I'$ is a Cartesian coordinate system,
+\[
+  \vec{e'}_i \cdot \vec{e'}_j = \delta_{ij}
+\]
+\[
+  c_{1i} c_{1j} + c_{2i} c_{2j} + c_{3i} c_{3j} = \delta_{ij}
+\]
+The above equation means that the inner product of two column vectors of $C$ is 
+$0$, and the inner product between a column vector of $C$ and itself is $1$. 
+Using matrix multiplication to express it:
+\[
+  C^T C = 
+  \begin{pmatrix}
+    c_{11} & c_{21} & c_{31} \\
+    c_{12} & c_{22} & c_{32} \\
+    c_{13} & c_{23} & c_{33} \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    c_{11} & c_{12} & c_{13} \\
+    c_{21} & c_{22} & c_{23} \\
+    c_{31} & c_{32} & c_{33} \\
+  \end{pmatrix} = 
+  \begin{pmatrix}
+    \vec{e'}_1 \cdot \vec{e'}_1 & \vec{e'}_2 \cdot \vec{e'}_1 & \vec{e'}_3 \cdot \vec{e'}_1 \\
+    \vec{e'}_1 \cdot \vec{e'}_2 & \vec{e'}_2 \cdot \vec{e'}_2 & \vec{e'}_3 \cdot \vec{e'}_2 \\
+    \vec{e'}_1 \cdot \vec{e'}_3 & \vec{e'}_2 \cdot \vec{e'}_3 & \vec{e'}_3 \cdot \vec{e'}_3 \\
+  \end{pmatrix} = 
+  \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+  \end{pmatrix} = E
+\]
+which shows that $C$ is an orthogonal matrix.
+
+\begin{remark}
+  It is clear that the properties of the basis of the two Cartesian coordinate 
+  systems, namely the vectors in a basis are unit vectors and they are 
+  orthogonal to each other, decide that the transformation matrix between them 
+  is an orthogonal matrix.
+\end{remark}
+
+Therefore, we have the following proposition:
+\begin{proposition}
+  The transformation matrix between two Cartesian coordinate systems is an 
+  orthogonal matrix.
+\end{proposition}
+
+By the property of an inverse matrix, it also holds that
+\[
+  C C^T = C^T C = E
+\]
+which means that the inner product of two row vectors of $C$ is $0$, and the 
+inner product between a row vector of $C$ and itself is $1$.
+
+\subsection{Transformation between Two Cartesian Coordinate Systems in a Plane}
+
+Suppose $C$ is the transformation matrix between two Cartesian coordinate systems in a plane:
+\[
+  C = 
+  \begin{pmatrix}
+    c_{11} & c_{12} \\
+    c_{21} & c_{22} \\
+  \end{pmatrix}
+\]
+
+According to the above proposition, $C$ is an orthogonal matrix, thus it 
+satisfies two conditions:
+\begin{enumerate}
+  \item $c_{11}^2 + c_{12}^2 = c_{11}^2 + c_{21}^2 = c_{12}^2 + c_{22}^2 = c_{21}^2 + c_{22}^2 = 1$
+  \item $c_{11} c_{12} + c_{21} c_{22} = c_{11} c_{21} + c_{12} c_{22} = 0$
+\end{enumerate}
+
+\[
+  C = 
+  \begin{pmatrix}
+    \cos\theta & -\sin\theta \\
+    \sin\theta & \cos\theta \\
+  \end{pmatrix}
+\]
+\[
+  C = 
+  \begin{pmatrix}
+    \cos\theta & \sin\theta \\
+    \sin\theta & -\cos\theta \\
+  \end{pmatrix} 
+\]
+in which $\theta \in \lbrack 0, 2\pi)$
+
+\end{document}
