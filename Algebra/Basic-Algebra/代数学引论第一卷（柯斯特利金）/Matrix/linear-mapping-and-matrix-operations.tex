@@ -316,8 +316,71 @@ produce the same result.
 \section{Equivalence Class of Matrices}
 
 \begin{definition}[Elementary Matrix]
-  
+  We call a matrix which can be obtained by doing one time of elementary row 
+  operation or column operation to the identity matrix as an elementary matrix.
 \end{definition}
+
+There are three kinds of elementary matrices, corresponding to the three kinds 
+of elementary operations:
+\begin{equation}
+  \begin{split}
+    F_{s,t} &= 
+    \begin{pmatrix}
+      1 \\
+        & \ddots & \\
+        &        & 0 &   & 1 \\
+        &        &   & 1 &   \\
+        &        & 1 &   & 0 \\
+        &        &   &   &   & \ddots &   \\
+        &        &   &   &   &        & 1 \\
+    \end{pmatrix}
+  \end{split}
+\end{equation}
+\begin{remark}
+  This matrix can be derived by exchanging the $s$-th column and the $t$-th 
+  column of $E$, or equivalently exchanging the $s$-th row and the $t$-th row of 
+  $E$.
+\end{remark}
+\begin{equation}
+  \begin{split}
+    F_{s,t}(\lambda) &= E + \lambda E_{s,t} \\
+                     &= 
+                     \begin{pmatrix}
+                      1 \\
+                        & \ddots \\
+                        &        & 1 & \cdots & \lambda & \cdots \\
+                        &        &   & \ddots &         &        \\
+                        &        &   &        & 1       &        \\
+                        &        &   &        &         & 1      \\
+                     \end{pmatrix}
+  \end{split}
+\end{equation}
+\begin{remark}
+  This matrix can be derived by adding the $s$-th column multiplied by $\lambda$ 
+  to the $t$-th column, or equivalently adding the $t$-th row multiplied by 
+  $\lambda$ to the $s$-th row.
+\end{remark}
+\begin{equation}
+  \begin{split}
+    F_{s}(\lambda) &= E + (\lambda - 1)E_{s,s} \\
+                   &= 
+                   \begin{pmatrix}
+                     1 \\
+                       & \ddots \\
+                       &        & \lambda \\
+                       &        &         & \ddots \\
+                       &        &         &        & 1
+                   \end{pmatrix}
+  \end{split}
+\end{equation}
+\begin{remark}
+  This matrix can be derived by multiplying the $s$-th row by $\lambda$, or 
+  equivalently multiplying the $s$-th column by $\lambda$.
+\end{remark}
+
+\begin{proposition}
+  Given an elementary $F$ 
+\end{proposition}
 
 \begin{theorem}
   $M_{m \times n}(\mathbb{R})$ has a partition of $\min(m, n) + 1$ equivalence 
