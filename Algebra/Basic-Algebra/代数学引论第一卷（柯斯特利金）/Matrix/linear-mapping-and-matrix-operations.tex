@@ -379,9 +379,70 @@ of elementary operations:
 \end{remark}
 
 \begin{proposition}
-  Given an elementary $F$ 
+  Given an elementary matrix $F$, $FA$ is the result of applying the 
+  corresponding elementary row operation to $A$, and $AF$ is the result of 
+  applying the corresponding elementary column operation to $A$.
+\end{proposition}
+\begin{proof}
+  We can easily prove this proposition by carrying out the matrix multiplication 
+  with block matrix multiplication. To check the result of $FA$, divide $A$ into 
+  row blocks (i.e. a block is a row of $A$). To check the result of $AF$, divide 
+  $A$ into column blocks (i.e. a block is a column of $A$).
+\end{proof}
+\begin{remark}
+  The elementary row operation to turn $A$ into $FA$ is the same as the 
+  elementary row operation to turn $E$ into $F$. For instance, $F_{s,t}$ is 
+  obtained by exchanging the $s$-th row and the $t$-th row of $E$, then 
+  $F_{s,t}A$ is the result of exchanging the $s$-th row and the $t$-th row of 
+  $A$.
+
+  Similarly, the elementary column operation to turn $A$ into $AF$ is the same 
+  as the elementary column operation to turn $E$ into $F$.
+\end{remark}
+
+\begin{proposition}
+  For any matrix $A \in M_{s \times t}$, it can be transformed into the 
+  following form
+  \begin{equation}
+    \begin{pmatrix}
+      E_r & 0 \\
+      0 & 0 \\
+    \end{pmatrix}
+  \end{equation}
+  with the three kinds of elementary row operations and column operations, and 
+  $\rank A = \rank E_r$.
 \end{proposition}
 
+\begin{definition}
+  If $A, B \in M_{s \times t}$, we say they are equivalent, denoted by $A ~ B$, 
+  if there are non-degenerate matrices $P$ and $Q$ such that $B = PAQ$.
+\end{definition}
+\begin{remark}
+  Note that the prerequisite to discuss whether two matrices are equivalent or 
+  not is that they have the same dimension (size).
+\end{remark}
+\begin{remark}
+  It is clear that the equivalence between two matrices defined above is a kind 
+  of equivalence relation, since it satisfies the three properties:
+  \begin{itemize}
+    \item reflexivity
+    \item symmetry
+    \item transivity
+  \end{itemize}
+\end{remark}
+
+From the above proposition, we can conclude that a matrix with its rank as $r$ 
+is equivalent to a matrix in a standard form
+\[
+  \begin{pmatrix}
+    E_r & 0 \\
+    0 & 0 \\
+  \end{pmatrix}
+\]
+with the same rank. Therefore, with the symmetry and transivity of the 
+equivalence relation between two matrices, all matrices with the same rank are 
+equivalent. Any pair of matrices with different rank are not equivalent. The 
+equivalence relation leads to the following theorem:
 \begin{theorem}
   $M_{m \times n}(\mathbb{R})$ has a partition of $\min(m, n) + 1$ equivalence 
   classes. All matrices with its rank as $r$ including the representative 
@@ -392,8 +453,23 @@ of elementary operations:
   Every non-degenerate matrix $A \in M_n(\mathbb{R})$ can be expressed as the 
   product of elementary matrices.
 \end{corollary}
+\begin{proof}
+  Based on the above proposition, we can find a series of elementary matrices 
+  $P_1, P_2, \ldots, P_s$ and $Q_1, Q_2, \ldots, Q_t$ such that
+  \[
+    E = P_s\cdots P_2P_1 A Q_1Q_2 \cdots Q_t
+  \]
+  \[
+    \begin{split}
+      A &= P_1^{-1}P_2^{-1} \cdots P_s^{-1} E Q_t^{-1} \cdots Q_2^{-1} Q_1^{-1} \\
+        &= P_1^{-1}P_2^{-1} \cdots P_s^{-1} Q_t^{-1} \cdots Q_2^{-1} Q_1^{-1}
+    \end{split}
+  \]
+\end{proof}
 
 \section{Calculation of Inverse Matrix}
+
+\section{Elementary Block Matrix}
 
 \section{Solution Space}
 
