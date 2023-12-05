@@ -1,0 +1,92 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\DeclareMathOperator{\rank}{rank}
+
+\title{Notes of "Solution of Linear Systems"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Solution Space of a Homogenous Linear System}
+
+\section{Solution Set of a Non-Homogenous Linear System}
+
+\section{同解与秩}
+
+\begin{proposition}
+  Suppose $A = \lbrack A_{(1)}, A_{(2)}, \ldots, A_{(s)}\rbrack$, $B = \lbrack 
+  B_{(1)}, B_{(2)}, \ldots, B_{(t)}\rbrack$, in which $A_{(i)}$ and $B_{(j)}$ 
+  are row vectors with $n$ elements. If every solution of $AX = 0$ is also a 
+  solution of $BX = 0$, then every row vector of $B$ is a linear combination of 
+  the row vectors of $A$.
+\end{proposition}
+
+\begin{corollary}
+  Suppose $A = (a_{ij})_{s \times n}$, $B = (b_{ij})_{t \times n}$. $AX = 0$ and 
+  $BX = 0$ has the same solution space if and only if the row vectors of $A$ and 
+  $B$ are in the row space of each other.
+\end{corollary}
+
+\begin{corollary}
+  Suppose $A = (a_{ij})_{s \times n}$, $B = (b_{ij})_{t \times n}$. If $AX = 0$ 
+  and $BX = 0$ has the same solution space, then $\rank A = \rank B$.
+\end{corollary}
+\begin{remark}
+  The converse is not true. Consider $A = 
+  \begin{pmatrix}
+    1 & 1 & 1 \\
+    0 & 0 & 1 \\
+  \end{pmatrix}$ and $B = 
+  \begin{pmatrix}
+    1 & 1 & 1 \\
+    0 & 1 & 0 \\
+  \end{pmatrix}$, which have the same rank as $2$, but different solution space.
+\end{remark}
+
+The above remark shows that given any two matrices $A_{s \times n}$ and $B_{t 
+\times n}$ with the same number of columns, from the condition that $\rank A = 
+\rank B$ we cannot conclude anything about the solution spaces of their 
+corresponding homogenous linear systems $AX = 0$ and $BX = 0$. However, if the 
+two matrices are connected by matrix multiplication, then we have
+\begin{proposition}
+  Suppose $A = (a_{ij})_{s \times t}$, $B = (b_{ij})_{t \times n}$. $(\rank AB = 
+  \rank B)$ $\Leftrightarrow$ $ABX = 0$ and $BX = 0$ has the same solution space 
+  $\Leftrightarrow$ Every solution of $ABX = 0$ is also a solution of $BX = 0$.
+\end{proposition}
+
+\section{带有特殊秩的矩阵}
+
+\subsection{秩1矩阵}
+
+\subsection{秩0矩阵}
+
+\begin{proposition}
+  Let $A$ be a square matrix of order $2$, and $k$ be an interger greater than 
+  $2$. $A^k = 0$ if and only if $A^2 = 0$
+\end{proposition}
+\end{document}
