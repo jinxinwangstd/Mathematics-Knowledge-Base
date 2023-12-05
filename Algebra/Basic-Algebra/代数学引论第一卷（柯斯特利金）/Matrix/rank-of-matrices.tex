@@ -32,6 +32,25 @@
 
 \maketitle
 
+\section{Overview}
+\begin{itemize}
+  \item Retrospective of Linear System
+  \item Rank of Matrices
+  \begin{itemize}
+    \item Def: Column space and column rank, row space and row rank of a 
+    matrix.
+    \item Lemma: Invariance of the row rank and column rank of a matrix through 
+    elementary row operations.
+    \item Thm: Equality of row rank and column rank of a matrix.
+    \item Def: Rank of a matrix.
+  \end{itemize}
+  \item Application: Sovlable Criterion of a Linear System
+  \begin{itemize}
+    \item Corollary: Numbere of Major Unknowns in a Linear System with Rank.
+    \item Thm: Sovlability of a Linear System with Rank.
+  \end{itemize}
+\end{itemize}
+
 \section{Retrospective of Linear System}
 
 With the notion of linear span, we have a new perspective of a linear system:
@@ -132,10 +151,11 @@ and the augmented matrix
   matrix exists.
 \end{remark}
 
-前面学到过，我们可以对系数矩阵进行两种初等变换，将其化为阶梯型矩阵。注意到关于初等变化的一个重要事实：两类初等变换都是inversible. More 
-specifically, the matrix $A'$ transformed from a matrix $A$ with elementary row 
-operations can be transformed back to $A$ with the same type of elementary row 
-operations.
+From previous knowledge we know that applying two kinds of elementary row 
+operations to a coefficient matrix can transform it to its row reduced echelon 
+form. Notice an important fact about elementary row operations: both kinds are 
+inversible. More specifically, the transformation of an elementary row operation 
+to a matrix can reversed (undone) with the same kind of elementary row operation.
 
 The above fact leads to the following important observation about the effect of 
 elementary row operations on the column rank and row rank of a matrix.
@@ -178,10 +198,21 @@ row rank and the column rank of a matrix is equal or not?
 
 \section{Application: Solvable Criterion of a Linear System}
 
-Through transforming a linear system to its row reduce echelon form, we can 
-already answer the solvable question of a linear system.
+Through transforming a linear system to its row reduced echelon form, we can 
+already answer the solvable question of a linear system by observing some 
+characteristics of the row reduced echelon form, such as whether there is an 
+equation with zero on the left side of the equal sign, and non-zero on the right 
+side.
 
-\begin{corollary}
+However, we are not satisfied with this approach because the process to 
+transform a coefficient matrix to its row reduced echelon form is undertermined, 
+in other words the process and the final form can vary from person to person. 
+Instead, we want to get the answer of solvability from some unique property of 
+the linear system, or equivalently the augmented matrix (including the 
+coefficient matrix). That's where rank comes on the scene.
+
+\subsection{Invariant of a Linear System with Rank}
+\begin{corollary}[Number of Major Unknowns in a Linear System with Rank]
   The number of the major unknowns in a homogenous linear system doesn't rely on 
   the way how it reaches the row reduced echelon form. It is always equal to the 
   rank of its coefficient matrix.
@@ -190,7 +221,9 @@ already answer the solvable question of a linear system.
   Hint: The number of non-zero rows in the row reduced echelon form.
 \end{proof}
 
-\begin{theorem}[Rouché–Capelli theorem or Kronecker–Capelli theorem]
+\subsection{Sovlability of a Linear System with Rank}
+\begin{theorem}[Rouché–Capelli theorem or Kronecker–Capelli theorem: Sovlability 
+of a Linear System with Rank]
   A linear system is solvable if and only if the rank of its coefficient matrix 
   is equal to the rank of its augmented matrix.
 \end{theorem}
