@@ -104,24 +104,63 @@
   is not discussed outside of the domain of the function.
 \end{remark}
 
-\begin{definition}[Removable of Discontinuity]
-  
+\begin{definition}[Removable Discontinuity]
+  If a point of discontinuity $a \in E$ of the function $f: E \to \mathbb{R}$ is 
+  such that there exists a continuous function $\tilde{f}: E \to \mathbb{R}$ 
+  such that $f|_{E \setminus a} = \tilde{f}|_{E \setminus a}$, then $a$ is 
+  called a removable discontinuity of the function $f$.
 \end{definition}
+
+\begin{example}
+  \[
+    f(x) = 
+    \begin{cases}
+      \sin(\frac{1}{x}), x \neq 0 \\
+      0, x = 0 \\
+    \end{cases}
+  \]
+\end{example}
 
 \begin{definition}[Discontinuity of First Kind]
-  
+  The point $a \in E$ is called a discontinuity of first kind for the function 
+  $f: E \to \mathbb{R}$ if the following limits exist
+  \[
+    f(a + 0) := \lim_{E \owns x \to a+0} \thickspace \textnormal{or} \thickspace f(a-0) := \lim_{E \owns x \to a-0}
+  \]
+  but at least one of them is not equal to the value $f(a)$ that the function 
+  assumes at $a$.
 \end{definition}
+\begin{remark}
+  A removable discontinuity is a discontinuity of first kind.
+\end{remark}
 
 \begin{definition}[Discontinuity of Second Kind]
-  
+  If $a \in E$ is a point of discontinuity of the function $f: E \to \mathbb{R}$
+  and at least one of the two limits
+  \[
+    f(a + 0) := \lim_{E \owns x \to a+0} \thickspace \textnormal{or} \thickspace f(a-0) := \lim_{E \owns x \to a-0}
+  \]
+  does not exist, then $a$ is called a discontinuity of second kind.
 \end{definition}
 
 \begin{example}[The Dirichlet Function]
-  
+  \[
+    \mathcal{D}(x) = 
+    \begin{cases}
+      1, x \in \mathbb{Q} \\
+      0, x \in \mathbb{R} \setminus \mathbb{Q} \\
+    \end{cases}
+  \]
 \end{example}
 
 \begin{example}[The Riemann Function]
-  
+  \[
+    \mathcal{R}(x) = 
+    \begin{cases}
+      \frac{1}{n}, \thickspace \textnormal{if} \thickspace x = \frac{m}{n} \in \mathbb{Q}, n \in \mathbb{N} \\
+      0, \thickspace \textnormal{if} \thickspace x \in \mathbb{R} \setminus \mathbb{Q} \\
+    \end{cases}
+  \]
 \end{example}
 
 \end{document}
