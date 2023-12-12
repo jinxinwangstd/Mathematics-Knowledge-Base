@@ -1,0 +1,62 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{hyperref} % For the functionality of creating hypertext links. It should be the last package to declare.
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\DeclareMathOperator{\rank}{rank}
+
+\title{Notes of "Inequalities"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{proposition}
+  If $x_1 \geq 0$, $x_2 \geq 0$, then the following inequality holds
+  \begin{equation}
+    |\sqrt{x_1} - \sqrt{x_2}| \leq \sqrt{|x_1 - x_2|}
+  \end{equation}
+  and the equality holds if and only if $x_1 = x_2$.
+\end{proposition}
+\begin{proof}
+  
+\end{proof}
+\begin{remark}
+  The geometric interpretation is related to the area of squares. Suppose $x_1$ 
+  and $x_2$ denote the area of two squares with one common vertex. Then the 平方 
+  of the right side is the absolute difference of the area of the two squares, 
+  and the 平方 of the left side is the area of the square with the side length as 
+  the absolute difference of the side lengths of the squares. Then the inequality 
+  is clear.
+\end{remark}
+
+\section{排序不等式}
+\href{https://en.wikipedia.org/wiki/Rearrangement_inequality}{Wikipedia about rearrangement inequality}
+
+\begin{example}
+  Prove that when $n > 1$ it holds that $n! < (\frac{n+2}{\sqrt{6}})^n$
+\end{example}
+
+\end{document}
