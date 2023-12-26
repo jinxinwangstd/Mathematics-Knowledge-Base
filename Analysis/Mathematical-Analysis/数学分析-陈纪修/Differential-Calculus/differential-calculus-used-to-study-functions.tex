@@ -1,0 +1,58 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\title{Notes of "Differential Calculus Used to Study Functions"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{L'Hopital's Rule}
+
+\begin{proposition}
+  Suppose the function $f: (a,b) \to \mathbb{R}$ and $g: (a,b) \to \mathbb{R}$
+  are differentiable on the open interval $(a, b)(-\infty \leq a < b \leq 
+  +\infty)$ with $g'(x) \neq 0$ on $(a, b)$ and
+  \[
+    \frac{f'(x)}{g'(x)} = A \thickspace \textnormal{as} \thickspace x \to a+0 \thickspace (-\infty \leq A \leq +\infty)
+  \]
+  Then
+  \[
+    \frac{f(x)}{g(x)} = A \thickspace \textnormal{as} \thickspace x \to a+0   
+  \]
+  in each of the following two cases:
+  \begin{description}
+    \item[$1^0$] $(f(x) \to 0) \wedge (g(x) \to 0)$ as $x \to a+0$
+    \item[$2^0$] $g(x) \to \infty$ as $x \to a+0$
+  \end{description}
+
+  A similar assertion holds as $x \to b-0$
+\end{proposition}
+\begin{proof}
+  
+\end{proof}
+
+\end{document}

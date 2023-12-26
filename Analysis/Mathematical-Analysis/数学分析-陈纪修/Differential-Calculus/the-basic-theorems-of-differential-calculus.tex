@@ -168,18 +168,45 @@
 \subsection{Cauchy's Finite-Increment Theorem}
 
 \begin{proposition}[Cauchy's Finite-Increment Theorem]
+  Suppose $x = x(t)$ and $y = y(t)$ are continuous on a closed interval $\lbrack 
+  \alpha, \beta \rbrack$ and differentiable on the open interval $(\alpha, 
+  \beta)$, then there exists a point $\tau \in (\alpha, \beta)$ such that
   \begin{equation}
     x'(\tau)(y(\beta) - y(\alpha)) = y'(\tau)(x(\beta) - x(\alpha))
   \end{equation}
 
+  If $x'(t) \neq 0$ is true on the open interval $(\alpha, \beta)$, then $x(a) 
+  \neq x(b)$ and the following equation holds
   \begin{equation}
     \frac{y(\beta) - y(\alpha)}{x(\beta) - x(\alpha)} = \frac{y'(\tau)}{x'(\tau)}
   \end{equation}
 \end{proposition}
+\begin{proof}
+  Hint:
+  \begin{itemize}
+    \item Construct the auxiliary function $F(t) = (x(\beta) - x(t))(y(\beta) - 
+    y(\alpha)) - (y(\alpha) - y(t))(x(\beta) - x(\alpha))$, then $F(\alpha) = 
+    F(\beta) = (x(\beta) - x(\alpha))(y(\beta) - y(\alpha))$. (An alternative 
+    auxiliary function from Zorich: $F(x) = x(t)(y(\beta) - y(\alpha)) - 
+    y(t)(x(\beta) - x(\alpha))$, then $F(\alpha) = F(\beta) = x(\alpha)y(\beta) - 
+    x(\beta)y(\alpha)$).
+    \item Use Rolle's Theorem.
+  \end{itemize}
+\end{proof}
+\begin{remark}
+  Interpretation in physics: the movement of a particle in a plane. Exception: 圆螺线。
+\end{remark}
+\begin{remark}
+  From Cauchy's Theorem to Lagrange's Theorem: Set $x(t) = t$.
+\end{remark}
 
 \section{Taylor's Formula}
 
 \subsection{Taylor Polynomial}
+
+An intuition: if two functions have same derivatives of more orders (including 
+the order $0$, i.e. the function itself, which is important) at a point $x = x_0$, 
+then the values of the two functions in a neighborhood of $x_0$ are closer.
 
 \begin{definition}[Taylor Polynomial of Order $n$]
   The following algebraic polynomial is the Taylor polynomial of order $n$ of 
@@ -189,7 +216,7 @@
   \end{equation}
 \end{definition}
 
-\subsection{Remainder}
+\subsection{Remainder of Taylor Polynomial}
 
 \begin{equation}
   f(x) - P_n(x_0; x) = r_n(x_0; x)
@@ -201,21 +228,31 @@
 
 \begin{theorem}
   If the function $f$ is continuous on the closed interval with end-points $x_0$ 
-  and $x$, and its first $n$ derivatives are continuous on this closed interval, 
-  and it has a derivative of order $n+1$ at the interior points of this interval, 
-  then for any function $\phi$ that is continuous on this close interval and has 
-  a nonzero derivative at its interior points, there exists a point $\xi$ between 
-  $x_0$ and $x$ such that
+  and $x$ ($\lbrack x, x_0 \rbrack$ or $\lbrack x_0, x \rbrack$), and its first 
+  $n$ derivatives are continuous on this closed interval, and it has a derivative 
+  of order $n+1$ at the interior points of this interval, then for any function 
+  $\phi$ that is continuous on this close interval and has a nonzero derivative 
+  at its interior points, there exists a point $\xi$ between $x_0$ and $x$ such 
+  that
   \begin{equation}
-    r_n(x_n; x) = \frac{\phi(x) - \phi(x_0)}{\phi'(\xi)n!}f^{(n+1)}(\xi)(x - \xi)^n
+    r_n(x_0; x) = \frac{\phi(x) - \phi(x_0)}{\phi'(\xi)n!}f^{(n+1)}(\xi)(x - \xi)^n
   \end{equation}
 \end{theorem}
 \begin{proof}
   Hint:
   \begin{itemize}
-    \item Construct the auxiliary function $F(t) = f(t) + \frac{f'(t)}{1!}(x - t) + 
-    \frac{f''(t)}{2!}(x - t)^2 + \cdots + \frac{f^{(n)}(t)}{n!}(x - t)^n$. 
-    Notice that in $F(t)$ $t$ is the variable while $x$ is a constant specified 
+    \item Construct the auxiliary function 
+    \[
+      \begin{split}
+        F(t) &= f(x) - P_n(x_0; x) \\
+             &= f(x) - (f(t) + \frac{f'(t)}{1!}(x - t) + \frac{f''(t)}{2!}(x - t)^2 + \cdots + \frac{f^{(n)}(t)}{n!}(x - t)^n)
+      \end{split}
+    \]
+    Then $F(x) = 0$ and $F(x_0) = r_n(x_0;x)$, which shows that our motivation 
+    behind this auxiliary function is to make the finite increment of $F(t)$ 
+    between $x_0$ and $x$ as $r_n(x_0;x)$.
+
+    Notice that in $F(t)$ the variable is $t$ while $x$ is a constant specified 
     by the closed interval in the above theorem in the above theorem.
     \item Use Cauchy's finite increment theorem.
   \end{itemize}
@@ -229,10 +266,60 @@
 \end{remark}
 
 \begin{corollary}[Cauchy's Formula for the Remainder Term]
-  
+  Let $\phi(t) = x - t$, then the remainder becomes
+  \begin{equation}
+    r_n(x_0; x) = \frac{1}{n!}f^{(n+1)}(\xi)(x - \xi)^n(x - x_0)
+  \end{equation}
 \end{corollary}
 
 \begin{corollary}[The Lagrange Form of the Remainder]
-  
+  Let $\phi(t) = (x - t)^{n+1}$, then the remainder becomes
+  \begin{equation}
+    r_n(x_0; x) = \frac{1}{(n+1)!}f^{(n+1)}(\xi)(x - x_0)^{n+1}
+  \end{equation}
 \end{corollary}
+
+\subsection{Local Taylor Formula}
+
+\begin{proposition}
+  If there exists a polynomial
+  \[
+    P_n(x_0;x) = c_0 + c_1(x - x_0) + \cdots + c_n(x - x_0)^n 
+  \]
+  satisfying the following condition
+  \[
+    f(x) = P_n(x) + o((x - x_0)^n), \thickspace \textnormal{as} \thickspace x \to x_0, x \in E
+  \],
+  that polynomial is unique.
+\end{proposition}
+\begin{proof}
+  
+\end{proof}
+
+\begin{proposition}[The Local Taylor Formula]
+  Let $E$ be a closed interval having $x_0 \in \mathbb{R}$ as an endpoint. If 
+  the function $f: E \to \mathbb{R}$ has derivatives $f'(x_0), \ldots, 
+  f^{(n)}(x_0)$ up to order $n$ inclusive at the point $x_0$, then the following 
+  representation holds:
+  \begin{equation}
+    f(x) = f(x_0) + \frac{f'(x_0)}{1!}(x - x_0) + \cdots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + o((x - x_0)^n), \thickspace \textnormal{as} \thickspace x \to x_0, x \in E
+  \end{equation}
+\end{proposition}
+\begin{remark}
+  The problem of the local approximation of a differentiable function is solved 
+  by the Taylor polynomial of the appropriate order.
+\end{remark}
+
+\begin{lemma}
+  If a function $\varphi: E \to \mathbb{R}$, defined on a closed interval $E$ 
+  with endpoint $x_0$, is such that it has derivatives up to order $n$ inclusive 
+  at $x_0$ and $\varphi(x_0) = \varphi'(x_0) = \cdots = \varphi^{(n)}(x_0) = 0$, 
+  then $\varphi(x) = o((x - x_0)^n)$, as $x \to x_0, x \in E$.
+\end{lemma}
+\begin{proof}
+  Hint: Proof by Induction.
+\end{proof}
+\begin{remark}
+  
+\end{remark}
 \end{document}
