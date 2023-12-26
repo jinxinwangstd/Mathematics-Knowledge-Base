@@ -1,0 +1,61 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,matrix,topaths}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sgn}{sgn}
+
+\title{Small Determinant}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Small Determinant}
+
+\begin{tikzpicture}
+[
+  auto,
+  block/.style = {rectangle, draw=black, thick, fill=white, text centered, text 
+  width=20em, minimum height=4em},
+  line/.style = {draw, thick, -latex'}
+]
+  \matrix [column sep=5mm, row sep=3mm] {
+    \node [block] (p1) {Solve a linear system with two unknowns and two equations}; \\
+    \node [block] (p2) {Find that the unknowns can be expressed with determinants consisting of coefficients}; \\
+    \node [block] (p3) {Building from solving linear systems with two unknowns 
+    and two equations, solve homogeous linear system with three unknowns and two
+    equations}; \\
+    \node [block] (p4) {Find that the unknowns can also be expressed with 
+    determinants consisting of coefficients}; \\
+    \node [block] (p5) {Building from here, }
+  };
+  \begin{scope}[every path/.style=line]
+    \path (p1) -- (p2);
+    \path (p2) -- (p3);
+  \end{scope}
+\end{tikzpicture}
+
+\end{document}
