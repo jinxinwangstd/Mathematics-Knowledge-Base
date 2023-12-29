@@ -111,7 +111,7 @@ Properties of Divisors:
   \end{itemize}
 \end{definition}
 \begin{remark}
-  Since $\forall f(x) \in P\lbrack x \rbrack$ is a divisor of the zero 
+  Since any polynomial $f(x) \in P\lbrack x \rbrack$ is a divisor of the zero 
   polynomial, in other words $0 = 0 \cdot f(x)$, the greatest common divisor of 
   $f(x)$ and $0$ is $f(x)$. Especially, the greatest common divisor of $0$ and $0$ 
   is $0$, which is in accordance with the definition of GCD.
@@ -152,8 +152,11 @@ Properties of Divisors:
 \begin{proof}
   (TODO)
 \end{proof}
-
-\begin{remark}[Euclid's Algorithm]
+\begin{remark}[The uniqueness of the expression of GCD as a combination of $f(x)$ and $g(x)$]
+  The combination of $f(x)$ and $g(x)$ to express their greatest common divisor 
+  $d(x)$ is not unique.
+\end{remark}
+\begin{remark}[Euclid's algorithm]
   
 \end{remark}
 
@@ -165,7 +168,7 @@ Properties of Divisors:
 \end{proposition}
 
 \begin{definition}[Coprime]
-  (f(x), g(x)) = 1
+  $(f(x), g(x)) = 1$
 \end{definition}
 
 \begin{theorem}[互素的等价条件]
@@ -180,14 +183,32 @@ Properties of Divisors:
 \begin{theorem}
   If $(f(x), g(x)) = 1$, and $f(x) | g(x)h(x)$, then $f(x) | h(x)$.
 \end{theorem}
-
+\begin{proof}
+  Hint:
+  \[
+    u(x)f(x) + v(x)g(x) = 1
+  \]
+  \[
+    u(x)f(x)h(x) + v(x)g(x)h(x) = h(x)
+  \]
+\end{proof}
 \begin{corollary}
   If $f_1(x) | g(x)$, $f_2(x) | g(x)$, and $(f_1(x), f_2(x)) = 1$, then $f_1(x)f_2(x) | g(x)$.
 \end{corollary}
+\begin{proof}
+  Hint:
+  \[
+    (f_1 \mid g) \Rightarrow (g = f_1 h_1)
+  \]
+  \[
+    (f_2 \mid g) \Rightarrow (f_2 \mid f_1 h_1) \Rightarrow (f_2 \mid h_1)
+  \]
+\end{proof}
 
 上述结论均可推广到多个多项式。
 
 \section{因式分解定理}
+
 \begin{definition}[不可约多项式]
   
 \end{definition}
@@ -207,11 +228,14 @@ Properties of Divisors:
 
 \begin{theorem}[不可约多项式作因式]
   Suppose $p(x) \in P\lbrack x \rbrack$ is a irreducible polynomial. Given two 
-  polynomials $f(x), g(x) \in P\lbrack x \rbrack$, if $p(x) | f(x)g(x)$, then 
-  $p(x) | f(x)$ or $p(x) | g(x)$.
+  polynomials $f(x), g(x) \in P\lbrack x \rbrack$, if $p(x) \mid f(x)g(x)$, then 
+  $p(x) \mid f(x)$ or $p(x) \mid g(x)$.
 \end{theorem}
 \begin{proof}
-  
+  If $p(x) \mid f(x)$, then the conclusion holds.
+    
+  If $p(x) \nmid f(x)$, then $(p(x), f(x)) = 1$, and hence $p(x) \mid 
+  g(x)$. The conclusion holds.
 \end{proof}
 
 \begin{theorem}[因式分解定理]
@@ -234,9 +258,26 @@ Properties of Divisors:
 \begin{theorem}
   如果不可约多项式$p(x)$是$f(x)$的k重因式，那么它是$f'(x)$的$k-1$重因式。
 \end{theorem}
-\begin{remark}
+\begin{proof}
+  Hint: 由于$p(x)$是$f(x)$的$k$重因式, there exists $q(x)$ such that $p(x) \nmid q(x)$ 
+  and $f(x) = p^k(x)q(x)$. Since $p(x)$ is irreducible, $(p(x) \nmid q(x)) 
+  \Rightarrow ((p(x), q(x)) = 1)$. Then
+  \[
+    \begin{split}
+      f'(x) &= kp^{k-1}(x)p'(x)q(x) + p^k(x)q'(x) \\
+            &= p^{k-1}(x)(kp'(x)q(x) + p(x)q'(x))
+    \end{split}
+  \]
+\end{proof}
+\begin{remark}[The necessity of the prerequisite that $p(x)$ is irreducible]
+  From the proof we can see the prerequisite that $p(x)$ is irreducible is 
+  necessary. If $p(x)$ is not irreducible, then $p(x)$ and $q(x)$ might have 
+  common divisors, which may result in $p(x) | p'(x)q(x)$, and thus $p(x)$至少是
+  $f(x)$的一个k重因式。
+\end{remark}
+\begin{remark}[The falsity of its converse and a counterexample]
   这个定理的逆命题并不成立，即若不可约多项式$p(x)$是$f'(x)$的$k$重因式，并不能推出$p(x)$是$f(x)$的$k+1$重因式。
-  反例：Given $f(x) = \frac{1}{3}x^3 - x$, then $f'(x) = x^2 - 1$, and $(x - 1)$ is a divisor of 
+  A counterexample：Given $f(x) = \frac{1}{3}x^3 - x$, then $f'(x) = x^2 - 1$, and $(x - 1)$ is a divisor of 
   $f'(x)$, but it is not a divisor of $f(x)$.
 \end{remark}
 
@@ -266,18 +307,22 @@ Properties of Divisors:
 
 \section{多项式函数}
 
-\begin{definition}[函数的根和零点]
+\begin{definition}[多项式函数的根和零点]
   
 \end{definition}
 
-\begin{theorem}[余数定理]
-  
+\begin{theorem}[The polynomial remainder theorem]
+  用一次多项式$x - \alpha$去除多项式$f(x)$，所得的余式是一个常数，这个常数等于$f(\alpha)$。
 \end{theorem}
 \begin{corollary}
-  $x = \alpha$ is a root of $f(x)$ $\Leftrightarrow$ $(x - \alpha) | f(x)$
+  The polynomial remainder theorem relates a root of a polynomial to a divisor 
+  of the polynomial as follows:
+  \[
+    (x = \alpha \thickspace \textnormal{is a root of} \thickspace f(x)) \Leftrightarrow ((x - \alpha) \mid f(x))
+  \]
 \end{corollary}
 
-\begin{definition}[重根]
+\begin{definition}[重根和单根]
   
 \end{definition}
 
@@ -314,7 +359,7 @@ Properties of Divisors:
 \subsection{实系数多项式}
 
 \begin{lemma}[实系数多项式根的共轭性]
-  在复数域上，若$x = \alpha$是一个实系数多项式的根，则$\bar{x} = \bar{\alpha}$也是这个实系数多项式的一个根。
+  在复数域上，若$x = \alpha$是一个实系数多项式的根，则其共轭$\bar{x} = \bar{\alpha}$也是这个实系数多项式的一个根。
 \end{lemma}
 
 \begin{theorem}[实系数多项式因式分解定理]
@@ -330,8 +375,22 @@ Properties of Divisors:
   $a_n, a_{n-1}, \ldots, a_1, a_0$是互素的，则我们称这样的多项式为primitive polynomial.
 \end{definition}
 \begin{remark}
-  任何一个非零有理系数多项式都可以化为一个本原多项式。
+  For all non-zero polynomial $p(x) \in \mathbb{Q}\lbrack x \rbrack$, it can be 
+  expressed as $r \cdot g(x)$ in which $r \in \mathbb{Q}$ and $g(x)$ is a 
+  primitive polynomial. This expression is unique up to a $\pm$ sign.
 \end{remark}
+
+\begin{example}
+  \[
+    f(x) = \frac{5}{4} = \frac{5}{4} \cdot 1 = -\frac{5}{4} \cdot (-1)
+  \]
+  \[
+    f(x) = \frac{2}{3}x = \frac{2}{3} \cdot (x) = -\frac{2}{3} \cdot (-x)
+  \]
+  \[
+    f(x) = \frac{2}{3}x^4 - 2x^2 + \frac{4}{5} = \frac{2}{15}(5x^4 - 15x^2 + 6) = -\frac{2}{15}(-5x^4 + 15x^2 - 6)
+  \]
+\end{example}
 
 \begin{theorem}[Gauss's Lemma]
   The product of two primitive polynomials is still a primitive polynomial.
@@ -354,14 +413,26 @@ Properties of Divisors:
 \begin{proof}
   
 \end{proof}
+\begin{remark}
+  If $g(x)$ is not a primitive polynomial,
+\end{remark}
 
-\begin{theorem}
+\begin{theorem}[A necessary condition of rational roots of a polynomial with integer coefficients]
   Suppose $f(x) \in \mathbb{Z}\lbrack x \rbrack$ where $f(x) = a_n x^n + 
   a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$. If $\frac{r}{s}$ is a rational root 
-  of $f(x)$ and $r, s$ are coprime, then $s \mid a_n$ $r \mid a_0$. Especially if 
-  $a_n = 1$, then all rational roots of $f(x)$ are integers, and are divisors of $a_0$.
+  of $f(x)$ and $r, s$ are coprime, then 
+  \[
+    s \mid a_n, r \mid a_0
+  \]
+  Especially if $a_n = 1$, then all rational roots of $f(x)$ are integers, and 
+  divisors of $a_0$.
 \end{theorem}
 \begin{proof}
+  Since $x = \frac{r}{s}$ is a rational root of $f(x)$, there exists $g(x) \in 
+  \mathbb{Q}\lbrack x \rbrack$ such that
+  \[
+    f(x) = (sx - r)g(x)
+  \]
 \end{proof}
 
 \begin{theorem}[Eisenstein's Criterion]
