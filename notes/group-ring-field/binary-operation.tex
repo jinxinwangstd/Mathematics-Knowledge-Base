@@ -1,0 +1,115 @@
+\documentclass[onecolumn]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\geometry{a4paper,scale=0.8}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\title{Notes of "Binary Operation"}
+\author{Jinxin Wang}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+
+\begin{itemize}
+  \item Operations, semigroups and monoids
+  \begin{itemize}
+    \item Def: An n-ary operation on a set
+    \item Examples of n-ary operations on a set
+    \begin{itemize}
+      \item Examples of unary operations: 
+      \item Examples of binary operations: 
+    \end{itemize}
+    \item Def: A semigroup
+    \item Def: An identity element and a monoid
+    \begin{itemize}
+      \item Rmk: The uniqueness of the identity element in a monoid
+    \end{itemize}
+    \item Examples of semigroups and monoids
+    \begin{itemize}
+      \item Eg: The set of all transformations on a set
+    \end{itemize}
+    \item Def: A subsemigroup and A submonoid
+    \begin{itemize}
+      \item Rmk: The equality between the identity element of a monoid and the one of its submonoid
+    \end{itemize}
+    \item Examples of subsemigroups and submonoids
+    \begin{itemize}
+      \item Eg: The set of all even integers with the addition in $(\mathbb{Z}, +)$
+      \item Eg: The set of all inversible $M_n(\mathbb{R})$ with the multiplication of matrices in $(M_n(\mathbb{R}), \cdot)$
+    \end{itemize}
+  \end{itemize}
+  \item Properties of associative operations
+  \begin{itemize}
+    \item Prop: The result of an associative binary operation of multiple operands is independent from the order of carrying out the operations
+    \item Rmk: Examples of binary operations on a set that is not associative
+  \end{itemize}
+  \item Exponentions and multiples
+  \begin{itemize}
+    \item Def: Exponentions with non-negative integer exponents
+    \item Rmk: Properties of exponentions with non-negative integer exponents
+    \item Def: Multiples with non-negative integer multipliers
+    \item Rmk: Properties of multiples with non-negative integer multipliers
+  \end{itemize}
+  \item Inversible elements
+  \begin{itemize}
+    \item Def: An inversible element and its inverse element
+    \begin{itemize}
+      \item Rmk: The prerequisite of discussing the inversibility of an element is having the identity element
+      \item Rmk: The uniqueness of the inverse element of an inversible element in a monoid
+      \item Rmk: The inversibility of the operation result of two inversible elements
+    \end{itemize}
+    \item Def: Negative exponentions and negative multiples
+    \item Prop: Properties of exponentions with integer exponents
+  \end{itemize}
+\end{itemize}
+
+\section{Operations, semigroups and monoids}
+
+\begin{remark}[The equality between the identity element of a monoid and the one of its submonoid]
+  The identity element of a monoid doesn't necessarily equal to the one in a submonoid, if the submonoid doesn't contain the identity of the monoid.
+
+  One example is that the monoid is $(M_2(\mathbb{R}), \cdot)$, whose identity is $
+  \begin{pmatrix}
+    1 & 0 \\
+    0 & 1 \\
+  \end{pmatrix}$, and the submonoid is the set of real-valued matrices of order 2 with the form like $
+  \begin{pmatrix}
+    a & 0 \\
+    0 & 0 \\
+  \end{pmatrix}$, whose identity is $
+  \begin{pmatrix}
+    1 & 0 \\
+    0 & 0 \\
+  \end{pmatrix}$
+\end{remark}
+
+\section{Properties of associative operations}
+
+\section{Exponentions and multiples}
+
+\section{Inversible elements}
+
+\end{document}
