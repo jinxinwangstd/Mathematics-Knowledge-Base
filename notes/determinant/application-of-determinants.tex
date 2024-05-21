@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{mathtools}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{float}
@@ -25,12 +26,49 @@
 
 \DeclareMathOperator{\rank}{rank}
 
-\title{Notes of "Application of Determinants"}
+\title{Notes of "Applications of Determinants"}
 \author{Jinxin Wang}
 \date{}
 
 \begin{document}
 
 \maketitle
+
+\section{Overview}
+\begin{itemize}
+  \item The Criterion for Non-Degenerate Matrices
+  \item Cramer's Rule
+  \item 加边子式法
+  \begin{itemize}
+    \item Definition: A k-th order minor of a matrix
+    \item Theorem: 加边子式法
+    \item Corollary: A practical way of computing the rank of a matrix
+  \end{itemize}
+\end{itemize}
+
+\section{The Criterion for a Non-Degenerate Matrix}
+
+\section{Cramer's Rule}
+
+\section{加边子式法}
+
+\begin{definition}[A k-th order minor of a matrix]
+  
+\end{definition}
+
+\begin{theorem}[加边子式法]
+  
+\end{theorem}
+\begin{remark}
+  加边子式法 is practically useful especially when we want to find not only the rank, 
+  but also a maximal linearly independent subset of rows or columns of a matrix. 
+  Compared with it, transformation to row echelon form by elementary operations 
+  will lose the information of maximal linearly independent subsets because 
+  elementary operations will modify the elements of the matrix.
+\end{remark}
+
+\begin{corollary}[A practical way of computing the rank of a matrix]
+  The rank of a matrix equals to the maximum order of its non-zero minors.
+\end{corollary}
 
 \end{document}
